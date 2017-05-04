@@ -11,11 +11,15 @@
             android:icon="@drawable/ic_action_event_note"
             android:title="Upcoming Batches/Events" />
         <item
+            android:id="@+id/nav_cost_involved"
+            android:icon="@drawable/ic_action_attach_money"
+            android:title="Registration fee" />
+        <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_action_collections"
             android:title="Gallery" />
         <item
-            android:id="@+id/experiences"
+            android:id="@+id/nav_experiences"
             android:icon="@drawable/ic_action_insert_comment"
             android:title="Comments received" />
 <!--        <item
@@ -31,23 +35,23 @@
     <item android:title="Contact Us">
         <menu>
             <item
-                android:id="@+id/mail"
+                android:id="@+id/nav_mail"
                 android:icon="@drawable/ic_action_contact_mail"
                 android:title="E-Mail" />
             <item
-                android:id="@+id/call"
+                android:id="@+id/nav_call"
                 android:icon="@drawable/ic_action_contact_phone"
                 android:title="Call" />
             <item
-                android:id="@+id/visit"
+                android:id="@+id/nav_visit"
                 android:icon="@drawable/ic_action_directions_walk"
                 android:title="Visit" />
             <item
-                android:id="@+id/feedback"
+                android:id="@+id/nav_feedback"
                 android:icon="@drawable/ic_action_border_color"
                 android:title="Write Feedback" />
             <item
-                android:id="@+id/facebook_like"
+                android:id="@+id/nav_facebook_like"
                 android:icon="@drawable/ic_action_thumb_up"
                 android:title="Like us in facebook" />
         </menu>
@@ -55,7 +59,7 @@
     <item android:title="Share">
         <menu>
             <item
-                android:id="@+id/share"
+                android:id="@+id/nav_share"
                 android:icon="@drawable/ic_action_share"
                 android:title="Share this app" />
 

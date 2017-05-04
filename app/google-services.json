@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "280104287905",
+    "firebase_url": "https://dhyanamandira-1f157.firebaseio.com",
+    "project_id": "dhyanamandira-1f157",
+    "storage_bucket": "dhyanamandira-1f157.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:280104287905:android:2019e73b68a8d93c",
+        "android_client_info": {
+          "package_name": "com.braingalore.dhyanamandira"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "280104287905-p3nrs96kisg5cg4s2o40lhikcd0v0348.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.braingalore.dhyanamandira",
+            "certificate_hash": "36e669213daf095598859f66054d72a0ca9aea69"
+          }
+        },
+        {
+          "client_id": "280104287905-sgr7idq6iucv3rgqug63k7fo2glcb50d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjgnSmgNnxHxbNHP-iNzG56B7bbkRXRsM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "280104287905-sgr7idq6iucv3rgqug63k7fo2glcb50d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
