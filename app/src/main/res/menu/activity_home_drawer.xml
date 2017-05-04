@@ -3,34 +3,64 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/nav_about_dmyk"
+            android:icon="@drawable/ic_action_info_outline"
+            android:title="About" />
+        <item
+            android:id="@+id/nav_events"
+            android:icon="@drawable/ic_action_event_note"
+            android:title="Upcoming Batches/Events" />
         <item
             android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_action_collections"
             android:title="Gallery" />
         <item
+            android:id="@+id/experiences"
+            android:icon="@drawable/ic_action_insert_comment"
+            android:title="Comments received" />
+<!--        <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Slideshow" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="Tools" />-->
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Contact Us">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/mail"
+                android:icon="@drawable/ic_action_contact_mail"
+                android:title="E-Mail" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/call"
+                android:icon="@drawable/ic_action_contact_phone"
+                android:title="Call" />
+            <item
+                android:id="@+id/visit"
+                android:icon="@drawable/ic_action_directions_walk"
+                android:title="Visit" />
+            <item
+                android:id="@+id/feedback"
+                android:icon="@drawable/ic_action_border_color"
+                android:title="Write Feedback" />
+            <item
+                android:id="@+id/facebook_like"
+                android:icon="@drawable/ic_action_thumb_up"
+                android:title="Like us in facebook" />
         </menu>
     </item>
+    <item android:title="Share">
+        <menu>
+            <item
+                android:id="@+id/share"
+                android:icon="@drawable/ic_action_share"
+                android:title="Share this app" />
+
+        </menu>
+    </item>
+
 
 </menu>
