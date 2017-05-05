@@ -22,14 +22,14 @@
             android:id="@+id/nav_experiences"
             android:icon="@drawable/ic_action_insert_comment"
             android:title="Comments received" />
-<!--        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />-->
+        <!--        <item
+                    android:id="@+id/nav_slideshow"
+                    android:icon="@drawable/ic_menu_slideshow"
+                    android:title="Slideshow" />
+                <item
+                    android:id="@+id/nav_manage"
+                    android:icon="@drawable/ic_menu_manage"
+                    android:title="Tools" />-->
     </group>
 
     <item android:title="Contact Us">
@@ -46,10 +46,10 @@
                 android:id="@+id/nav_visit"
                 android:icon="@drawable/ic_action_directions_walk"
                 android:title="Visit" />
-            <item
+            <!--<item
                 android:id="@+id/nav_feedback"
                 android:icon="@drawable/ic_action_border_color"
-                android:title="Write Feedback" />
+                android:title="Write Feedback" />-->
             <item
                 android:id="@+id/nav_facebook_like"
                 android:icon="@drawable/ic_action_thumb_up"

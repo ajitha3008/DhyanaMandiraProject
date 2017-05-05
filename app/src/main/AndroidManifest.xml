@@ -3,6 +3,7 @@
     package="com.braingalore.dhyanamandira">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:name=".DhyanaMandira"
         android:allowBackup="true"
@@ -22,19 +23,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--<service
-            android:name=".MyFirebaseMessagingService">
+        <service
+            android:name=".services.FirebaseMessageReceiverService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
-        </service>-->
+        </service>
         <!--<service
             android:name=".MyFirebaseInstanceIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
             </intent-filter>
         </service>-->
-
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+        <!-- TODO: release key generation for facebook -->
+        <provider android:authorities="com.facebook.app.FacebookContentProvider226193674544976"
+            android:name="com.facebook.FacebookContentProvider"
+            android:exported="true" />
     </application>
 
 </manifest>

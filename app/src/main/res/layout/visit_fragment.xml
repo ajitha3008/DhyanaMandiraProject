@@ -20,10 +20,27 @@
         app:layout_constraintTop_toTopOf="parent"
         card_view:cardCornerRadius="4dp">
 
-        <WebView
-            android:id="@+id/webView_cost"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="500dp"
+            android:layout_margin="10dp">
+
+            <fragment
+                android:id="@+id/googleMap"
+                class="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/latlongLocation" />
+
+            <TextView
+                android:id="@+id/latlongLocation"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="10dp"
+                android:gravity="bottom"
+                android:text="PostalAddress:\nRajkumar G\nMukhya Shikshaka\nDhyana Mandira Yoga Kendra\nShri Someshwara(Shiva) Temple,\nMadiwala,\nBTM 1st Stage,\nBangalore,\n560068" />
+        </RelativeLayout>
 
     </android.support.v7.widget.CardView>
 

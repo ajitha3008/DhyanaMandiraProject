@@ -2,6 +2,7 @@ package com.braingalore.dhyanamandira;
 
 import android.app.Application;
 
+import com.facebook.FacebookSdk;
 import com.google.firebase.FirebaseApp;
 
 /**
@@ -14,5 +15,6 @@ public class DhyanaMandira extends Application {
     public void onCreate() {
         super.onCreate();
         FirebaseApp.initializeApp(this);
+        FacebookSdk.sdkInitialize(this);
     }
 }

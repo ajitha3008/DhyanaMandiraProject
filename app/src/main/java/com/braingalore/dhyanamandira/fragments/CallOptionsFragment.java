@@ -1,0 +1,55 @@
+package com.braingalore.dhyanamandira.fragments;
+
+import android.Manifest;
+import android.app.Fragment;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.telephony.TelephonyManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.braingalore.dhyanamandira.Constants;
+import com.braingalore.dhyanamandira.R;
+import com.braingalore.dhyanamandira.utils.CallingUtils;
+
+/**
+ * Created by s92 on 5/4/2017.
+ */
+
+public class CallOptionsFragment extends Fragment {
+
+    public View onCreateView(LayoutInflater inflater, ViewGroup vg,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.content_call_fragment, vg, false);
+        Button number1 = (Button) view.findViewById(R.id.number743);
+        number1.setOnClickListener(clickListener);
+        Button number2 = (Button) view.findViewById(R.id.number812);
+        number2.setOnClickListener(clickListener);
+        return view;
+    }
+
+    private View.OnClickListener clickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            String numberToDial = "";
+            if (view.getId() == R.id.number812) {
+                numberToDial = "+918123848682";
+            }
+            if (view.getId() == R.id.number743) {
+                numberToDial = "+917349782713";
+            }
+            if (CallingUtils.isSimPresent(getActivity())) {
+                CallingUtils.dialIntent(getActivity(), numberToDial, view);
+            } else {
+                Snackbar.make(view, "Insert SIM card to call Dhyana Mandira - Rajkumar", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        }
+    };
+}

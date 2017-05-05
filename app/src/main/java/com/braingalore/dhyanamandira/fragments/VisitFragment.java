@@ -14,7 +14,7 @@ import com.braingalore.dhyanamandira.R;
  * Created by s92 on 5/4/2017.
  */
 
-public class CostFragment extends Fragment {
+public class VisitFragment extends Fragment {
     String registrationCost = "<html><body style=\"text-align:justify\"><i>The yoga school operates on free of cost. But to maintain the premises and ensure the candidates registration, there is a minimal one time payment of Rs.100/- collected from every candidate on joining.</i></body></Html>";
 
     private WebView webView;
@@ -23,7 +23,7 @@ public class CostFragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup vg,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.content_cost, vg, false);
+        View view = inflater.inflate(R.layout.visit_fragment, vg, false);
         webView = (WebView) view.findViewById(R.id.webView_cost);
         webView.loadData(String.format(htmlText, registrationCost), "text/html", "utf-8");
         webView.setWebViewClient(new WebViewClient() {
