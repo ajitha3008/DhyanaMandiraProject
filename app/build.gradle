@@ -4,7 +4,7 @@ android {
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.braingalore.dhyanamandira"
-        minSdkVersion 16
+        minSdkVersion 17
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -49,11 +49,13 @@ dependencies {
     })
     // https://mvnrepository.com/artifact/com.facebook.android/facebook-android-sdk
     compile group: 'com.facebook.android', name: 'facebook-android-sdk', version: '4.22.0'
+    compile 'com.google.android.gms:play-services-maps:10.2.0'
     //compile 'com.sun.mail:android-mail:1.5.5'
     //compile 'com.sun.mail:android-activation:1.5.5'
     compile 'com.google.firebase:firebase-core:10.2.0'
     compile 'com.google.firebase:firebase-crash:10.2.0'
     compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:recyclerview-v7:25.3.1'
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support:cardview-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'

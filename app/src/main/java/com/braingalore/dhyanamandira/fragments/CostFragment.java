@@ -9,6 +9,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.braingalore.dhyanamandira.R;
+import com.braingalore.dhyanamandira.utils.AnimUtils;
 
 /**
  * Created by s92 on 5/4/2017.
@@ -28,6 +29,7 @@ public class CostFragment extends Fragment {
         webView.loadData(String.format(htmlText, registrationCost), "text/html", "utf-8");
         webView.setWebViewClient(new WebViewClient() {
             public void onPageFinished(WebView view, String url) {
+                AnimUtils.animate(view, getActivity());
                 view.scrollTo(0, 0);
             }
         });

@@ -9,13 +9,22 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.braingalore.dhyanamandira.R;
+import com.braingalore.dhyanamandira.utils.AnimUtils;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 /**
  * Created by s92 on 5/4/2017.
  */
 
-public class VisitFragment extends Fragment {
-    String registrationCost = "<html><body style=\"text-align:justify\"><i>The yoga school operates on free of cost. But to maintain the premises and ensure the candidates registration, there is a minimal one time payment of Rs.100/- collected from every candidate on joining.</i></body></Html>";
+public class VisitFragment extends Fragment implements OnMapReadyCallback {
+
+    String postalAddress = "<html><body style=\"text-align:justify\">Click on the marker above to get directions<i><br><br><b>PostalAddress:</b><br>Rajkumar G<br>Mukhya Shikshaka<br>Dhyana Mandira Yoga Kendra<br>Shri Someshwara(Shiva) Temple,<br>Madiwala,<br>BTM 1st Stage,<br>Bangalore,<br>560068</i></body></Html>";
 
     private WebView webView;
 
@@ -24,13 +33,32 @@ public class VisitFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup vg,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.visit_fragment, vg, false);
-        webView = (WebView) view.findViewById(R.id.webView_cost);
-        webView.loadData(String.format(htmlText, registrationCost), "text/html", "utf-8");
+
+        /*mMapView = (MapView)view.findViewById(R.id.mapview);
+        mMapView.getMapAsync(this);*/
+        MapFragment mapFragment = (MapFragment) getChildFragmentManager()
+                .findFragmentById(R.id.map_fragment);
+        if(mapFragment!=null) {
+            mapFragment.getMapAsync(this);
+        }
+
+        webView = (WebView) view.findViewById(R.id.postal_webview);
+        webView.loadData(String.format(htmlText, postalAddress), "text/html", "utf-8");
         webView.setWebViewClient(new WebViewClient() {
             public void onPageFinished(WebView view, String url) {
+                AnimUtils.animate(view, getActivity());
                 view.scrollTo(0, 0);
             }
         });
         return view;
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        googleMap.getUiSettings().setZoomControlsEnabled(true);
+        LatLng dhyanaMandir = new LatLng(12.918235, 77.618393);
+        googleMap.addMarker(new MarkerOptions().position(dhyanaMandir).title("Dhyana Mandir"));
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(dhyanaMandir, 10);
+        googleMap.animateCamera(cameraUpdate);
     }
 }

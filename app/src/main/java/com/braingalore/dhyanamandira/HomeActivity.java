@@ -18,12 +18,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.braingalore.dhyanamandira.fragments.AboutFragment;
 import com.braingalore.dhyanamandira.fragments.CallOptionsFragment;
+import com.braingalore.dhyanamandira.fragments.CommentsFragment;
 import com.braingalore.dhyanamandira.fragments.CostFragment;
+import com.braingalore.dhyanamandira.fragments.EventsFragment;
 import com.braingalore.dhyanamandira.fragments.FacebookLikeFragment;
+import com.braingalore.dhyanamandira.fragments.FounderFragment;
+import com.braingalore.dhyanamandira.fragments.GalleryFragment;
+import com.braingalore.dhyanamandira.fragments.VisitFragment;
 import com.braingalore.dhyanamandira.utils.CallingUtils;
 /*import com.facebook.share.widget.LikeView;
 import com.sun.mail.smtp.SMTPTransport;
@@ -107,19 +111,35 @@ public class HomeActivity extends AppCompatActivity
             AboutFragment f1 = new AboutFragment();
             fragmentTransaction.replace(R.id.fragment_container, f1);
             fragmentTransaction.commit();
+        }
+        if (id == R.id.nav_about_founder) {
+            fragmentTransaction = fm.beginTransaction();
+            FounderFragment f1 = new FounderFragment();
+            fragmentTransaction.replace(R.id.fragment_container, f1);
+            fragmentTransaction.commit();
         } else if (id == R.id.nav_events) {
-
+            fragmentTransaction = fm.beginTransaction();
+            EventsFragment f1 = new EventsFragment();
+            fragmentTransaction.replace(R.id.fragment_container, f1);
+            fragmentTransaction.commit();
         } else if (id == R.id.nav_cost_involved) {
             fragmentTransaction = fm.beginTransaction();
             CostFragment f1 = new CostFragment();
             fragmentTransaction.replace(R.id.fragment_container, f1);
             fragmentTransaction.commit();
         } else if (id == R.id.nav_gallery) {
-
+            fragmentTransaction = fm.beginTransaction();
+            GalleryFragment f1 = new GalleryFragment();
+            fragmentTransaction.replace(R.id.fragment_container, f1);
+            fragmentTransaction.commit();
         } else if (id == R.id.nav_experiences) {
-
+            fragmentTransaction = fm.beginTransaction();
+            CommentsFragment f1 = new CommentsFragment();
+            fragmentTransaction.replace(R.id.fragment_container, f1);
+            fragmentTransaction.commit();
         } else if (id == R.id.nav_mail) {
             Intent intent = new Intent(Intent.ACTION_SENDTO);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.setData(Uri.fromParts("mailto", "rajayogamadiwala@gmail.com", null));
             intent.putExtra(Intent.EXTRA_SUBJECT, "DhyanaMandira :: Contact Us");
             if (intent.resolveActivity(getPackageManager()) != null) {
@@ -131,20 +151,23 @@ public class HomeActivity extends AppCompatActivity
             fragmentTransaction.replace(R.id.fragment_container, f1);
             fragmentTransaction.commit();
         } else if (id == R.id.nav_visit) {
-
+            fragmentTransaction = fm.beginTransaction();
+            VisitFragment f1 = new VisitFragment();
+            fragmentTransaction.replace(R.id.fragment_container, f1);
+            fragmentTransaction.commit();
         } else if (false/*id == R.id.nav_feedback*/) {
             final Dialog dialog = new Dialog(this);
             dialog.setContentView(R.layout.feedback_fragment);
             dialog.setTitle("Provide Feedback");
-            final EditText mailID=(EditText)dialog.findViewById(R.id.feedback_mail_edittext);
-            final EditText name=(EditText)dialog.findViewById(R.id.feedback_name_edittext);
-            final EditText message=(EditText)dialog.findViewById(R.id.feedback_message_edittext);
-            Button send = (Button)dialog.findViewById(R.id.feedback_send);
-            Button cancel = (Button)dialog.findViewById(R.id.feedback_cancel);
+            final EditText mailID = (EditText) dialog.findViewById(R.id.feedback_mail_edittext);
+            final EditText name = (EditText) dialog.findViewById(R.id.feedback_name_edittext);
+            final EditText message = (EditText) dialog.findViewById(R.id.feedback_message_edittext);
+            Button send = (Button) dialog.findViewById(R.id.feedback_send);
+            Button cancel = (Button) dialog.findViewById(R.id.feedback_cancel);
             send.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    sendMail(mailID.getText().toString(), name.getText().toString(),message.getText().toString());
+                    sendMail(mailID.getText().toString(), name.getText().toString(), message.getText().toString());
                     dialog.dismiss();
                 }
             });
@@ -174,6 +197,7 @@ public class HomeActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

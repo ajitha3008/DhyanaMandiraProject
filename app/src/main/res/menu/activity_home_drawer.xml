@@ -7,6 +7,10 @@
             android:icon="@drawable/ic_action_info_outline"
             android:title="About" />
         <item
+            android:id="@+id/nav_about_founder"
+            android:icon="@drawable/ic_action_person_outline"
+            android:title="Founder" />
+        <item
             android:id="@+id/nav_events"
             android:icon="@drawable/ic_action_event_note"
             android:title="Upcoming Batches/Events" />

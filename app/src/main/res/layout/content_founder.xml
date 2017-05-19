@@ -31,26 +31,26 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/dhyana_text_view"
+                    android:id="@+id/founder_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="10dp"
-                    android:text="DHYANA MANDIRA YOGA KENDRA"
+                    android:text="FOUNDER"
                     android:textAllCaps="true"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                     android:textSize="16dp" />
 
                 <ImageView
-                    android:id="@+id/classroom_image_view"
+                    android:id="@+id/sir_image_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:adjustViewBounds="true"
                     android:padding="10dp"
-                    android:src="@drawable/class_room_refactored" />
+                    android:src="@drawable/sir_refactored" />
 
                 <WebView
-                    android:id="@+id/webView_about"
+                    android:id="@+id/webView_about_sir"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 

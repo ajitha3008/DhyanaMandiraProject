@@ -4,7 +4,6 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +11,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.braingalore.dhyanamandira.R;
+import com.braingalore.dhyanamandira.utils.AnimUtils;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -63,20 +63,23 @@ public class FacebookLikeFragment extends Fragment {
         contentView.loadData(String.format(htmlText, content), "text/html", "utf-8");
         contentView.setWebViewClient(new WebViewClient() {
             public void onPageFinished(WebView view, String url) {
+                AnimUtils.animate(view, getActivity());
                 view.scrollTo(0, 0);
             }
         });
-        likeview = (LikeView)view.findViewById(R.id.like_view);
+        likeview = (LikeView) view.findViewById(R.id.like_view);
         likeview.setObjectIdAndType("https://www.facebook.com/DhyanaMandiraSomeshwaraTemple", LikeView.ObjectType.PAGE);
         likeview.setFragment(this);
         likeview.setLikeViewStyle(LikeView.Style.BOX_COUNT);
+        AnimUtils.animate(likeview, getActivity());
 
         ShareLinkContent linkContent = new ShareLinkContent.Builder()
                 .setContentUrl(Uri.parse("https://www.facebook.com/DhyanaMandiraSomeshwaraTemple"))
                 .build();
 
-        shareButton = (ShareButton)view.findViewById(R.id.share_view);
+        shareButton = (ShareButton) view.findViewById(R.id.share_view);
         shareButton.setShareContent(linkContent);
+        AnimUtils.animate(shareButton, getActivity());
         return view;
     }
 
