@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         config {
-            keyAlias 'dhyanamandhir'
+            keyAlias 'dhyanamandir'
             keyPassword 'dhyanamandhir'
             storeFile file('C:/Users/S92/Desktop/logs/dhyanamandir.jks')
             storePassword 'dhyanamandhir'
