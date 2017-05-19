@@ -9,13 +9,16 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.braingalore.dhyanamandira.AsyncResult;
+import com.braingalore.dhyanamandira.HomeActivity;
 import com.braingalore.dhyanamandira.R;
 import com.braingalore.dhyanamandira.adapter.CommentsAdapter;
 import com.braingalore.dhyanamandira.model.CommentObject;
 import com.braingalore.dhyanamandira.spreadsheetreader.CommentsReader;
 import com.braingalore.dhyanamandira.utils.DividerItemDecoration;
+import com.google.firebase.crash.FirebaseCrash;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -43,35 +46,39 @@ public class CommentsFragment extends Fragment {
         View view = inflater.inflate(R.layout.recycler_view_layout, vg, false);
         commentsList = (RecyclerView) view.findViewById(R.id.recycler_view);
         commentsList.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
-        pDialog = new ProgressDialog(getActivity());
-        pDialog.setCancelable(false);
-        pDialog.setMessage("Loading...");
-        pDialog.show();
-        new CommentsReader(new AsyncResult() {
-            @Override
-            public void onCommentsResult(JSONObject object) {
-                commentObjectList = prepareCommentData(object);
-                commentsAdapter = new CommentsAdapter(commentObjectList);
-                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
-                commentsList.setLayoutManager(mLayoutManager);
-                //commentsList.setItemAnimator(new DefaultItemAnimator());
-                commentsList.setAdapter(commentsAdapter);
-                if (pDialog != null && pDialog.isShowing()) {
-                    pDialog.dismiss();
+        if (((HomeActivity) getActivity()).isNetworkAvailable()) {
+            pDialog = new ProgressDialog(getActivity());
+            pDialog.setCancelable(false);
+            pDialog.setMessage("Loading...");
+            pDialog.show();
+            new CommentsReader(new AsyncResult() {
+                @Override
+                public void onCommentsResult(JSONObject object) {
+                    commentObjectList = prepareCommentData(object);
+                    commentsAdapter = new CommentsAdapter(commentObjectList);
+                    RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+                    commentsList.setLayoutManager(mLayoutManager);
+                    //commentsList.setItemAnimator(new DefaultItemAnimator());
+                    commentsList.setAdapter(commentsAdapter);
+                    if (pDialog != null && pDialog.isShowing()) {
+                        pDialog.dismiss();
+                    }
+                    commentsAdapter.notifyDataSetChanged();
                 }
-                commentsAdapter.notifyDataSetChanged();
-            }
 
-            @Override
-            public void onGalleryResult(JSONObject object) {
+                @Override
+                public void onGalleryResult(JSONObject object) {
 
-            }
+                }
 
-            @Override
-            public void onEventsResult(JSONObject object) {
+                @Override
+                public void onEventsResult(JSONObject object) {
 
-            }
-        }).execute("");
+                }
+            }).execute("");
+        } else {
+            Toast.makeText(getActivity(), "Please connect to internet to proceed...", Toast.LENGTH_SHORT).show();
+        }
         return view;
     }
 
@@ -97,21 +104,25 @@ public class CommentsFragment extends Fragment {
         commentObjectList.add(new CommentObject(4, "praveen mdw","Yoga Practice held every day by professionals without any fee.\n" +
                 "one can see practitioners performing yoga since years. Initially basic training will be provided then to practice yoga along with Senior members  ,fun to learn and perform yoga.\n"));
         //commentObjectList.add(new CommentObject(, "",""));*/
-        try {
-            JSONArray rows = object.getJSONArray("rows");
+        if (object != null) {
+            try {
+                JSONArray rows = object.getJSONArray("rows");
 
-            for (int r = 0; r < rows.length(); ++r) {
-                JSONObject row = rows.getJSONObject(r);
-                JSONArray columns = row.getJSONArray("c");
+                for (int r = 0; r < rows.length(); ++r) {
+                    JSONObject row = rows.getJSONObject(r);
+                    JSONArray columns = row.getJSONArray("c");
 
-                int starCount = columns.getJSONObject(0).getInt("v");
-                String name = columns.getJSONObject(1).getString("v");
-                String comment = columns.getJSONObject(2).getString("v");
-                if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(comment) && !name.equals("name"))
-                    commentObjectList.add(new CommentObject(starCount, name, comment));
+                    int starCount = columns.getJSONObject(0).getInt("v");
+                    String name = columns.getJSONObject(1).getString("v");
+                    String comment = columns.getJSONObject(2).getString("v");
+                    if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(comment) && !name.equals("name"))
+                        commentObjectList.add(new CommentObject(starCount, name, comment));
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-        } catch (JSONException e) {
-            e.printStackTrace();
+        } else {
+            FirebaseCrash.report(new Exception("Comments JSON object null"));
         }
         return commentObjectList;
     }

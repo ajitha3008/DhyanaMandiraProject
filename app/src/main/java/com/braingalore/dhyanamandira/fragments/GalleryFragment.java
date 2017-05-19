@@ -9,13 +9,16 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.braingalore.dhyanamandira.AsyncResult;
+import com.braingalore.dhyanamandira.HomeActivity;
 import com.braingalore.dhyanamandira.R;
 import com.braingalore.dhyanamandira.adapter.GalleryAdapter;
 import com.braingalore.dhyanamandira.model.GalleryObject;
 import com.braingalore.dhyanamandira.spreadsheetreader.GalleryReader;
 import com.braingalore.dhyanamandira.utils.DividerItemDecoration;
+import com.google.firebase.crash.FirebaseCrash;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -43,53 +46,61 @@ public class GalleryFragment extends Fragment {
         View view = inflater.inflate(R.layout.recycler_view_layout, vg, false);
         galleryItemList = (RecyclerView) view.findViewById(R.id.recycler_view);
         galleryItemList.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
-        pDialog = new ProgressDialog(getActivity());
-        pDialog.setCancelable(false);
-        pDialog.setMessage("Loading...");
-        pDialog.show();
-        new GalleryReader(new AsyncResult() {
-            @Override
-            public void onCommentsResult(JSONObject object) {
+        if (((HomeActivity) getActivity()).isNetworkAvailable()) {
+            pDialog = new ProgressDialog(getActivity());
+            pDialog.setCancelable(false);
+            pDialog.setMessage("Loading...");
+            pDialog.show();
+            new GalleryReader(new AsyncResult() {
+                @Override
+                public void onCommentsResult(JSONObject object) {
 
-            }
-
-            @Override
-            public void onGalleryResult(JSONObject object) {
-                galleryObjectList = prepareGallerydata(object);
-                galleryAdapter = new GalleryAdapter(galleryObjectList);
-                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
-                galleryItemList.setLayoutManager(mLayoutManager);
-                //commentsList.setItemAnimator(new DefaultItemAnimator());
-                galleryItemList.setAdapter(galleryAdapter);
-                if (pDialog != null && pDialog.isShowing()) {
-                    pDialog.dismiss();
                 }
-                galleryAdapter.notifyDataSetChanged();
-            }
 
-            @Override
-            public void onEventsResult(JSONObject object) {
+                @Override
+                public void onGalleryResult(JSONObject object) {
+                    galleryObjectList = prepareGallerydata(object);
+                    galleryAdapter = new GalleryAdapter(galleryObjectList);
+                    RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+                    galleryItemList.setLayoutManager(mLayoutManager);
+                    //commentsList.setItemAnimator(new DefaultItemAnimator());
+                    galleryItemList.setAdapter(galleryAdapter);
+                    if (pDialog != null && pDialog.isShowing()) {
+                        pDialog.dismiss();
+                    }
+                    galleryAdapter.notifyDataSetChanged();
+                }
 
-            }
-        }).execute("");
+                @Override
+                public void onEventsResult(JSONObject object) {
+
+                }
+            }).execute("");
+        } else {
+            Toast.makeText(getActivity(), "Please connect to internet to proceed...", Toast.LENGTH_SHORT).show();
+        }
         return view;
     }
 
     private List<GalleryObject> prepareGallerydata(JSONObject object) {
         galleryObjectList = new ArrayList<GalleryObject>();
-        try {
-            JSONArray rows = object.getJSONArray("rows");
+        if (object != null) {
+            try {
+                JSONArray rows = object.getJSONArray("rows");
 
-            for (int r = 0; r < rows.length(); ++r) {
-                JSONObject row = rows.getJSONObject(r);
-                JSONArray columns = row.getJSONArray("c");
-                String desc = columns.getJSONObject(0).getString("v");
-                String link = columns.getJSONObject(1).getString("v");
-                if (!TextUtils.isEmpty(desc) && !TextUtils.isEmpty(link) && !link.equals("link"))
-                    galleryObjectList.add(new GalleryObject(desc, link));
+                for (int r = 0; r < rows.length(); ++r) {
+                    JSONObject row = rows.getJSONObject(r);
+                    JSONArray columns = row.getJSONArray("c");
+                    String desc = columns.getJSONObject(0).getString("v");
+                    String link = columns.getJSONObject(1).getString("v");
+                    if (!TextUtils.isEmpty(desc) && !TextUtils.isEmpty(link) && !link.equals("link"))
+                        galleryObjectList.add(new GalleryObject(desc, link));
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-        } catch (JSONException e) {
-            e.printStackTrace();
+        } else {
+            FirebaseCrash.report(new Exception("Gallery JSON object null"));
         }
         return galleryObjectList;
     }

@@ -5,6 +5,7 @@ package com.braingalore.dhyanamandira.spreadsheetreader;
  */
 
 import android.os.AsyncTask;
+import android.text.TextUtils;
 
 import com.braingalore.dhyanamandira.AsyncResult;
 
@@ -39,14 +40,18 @@ public class GalleryReader extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String result) {
         // remove the unnecessary parts from the response and construct a JSON
-        int start = result.indexOf("{", result.indexOf("{") + 1);
-        int end = result.lastIndexOf("}");
-        String jsonResponse = result.substring(start, end);
-        try {
-            JSONObject table = new JSONObject(jsonResponse);
-            callback.onGalleryResult(table);
-        } catch (JSONException e) {
-            e.printStackTrace();
+        if (!TextUtils.isEmpty(result)) {
+            int start = result.indexOf("{", result.indexOf("{") + 1);
+            int end = result.lastIndexOf("}");
+            String jsonResponse = result.substring(start, end);
+            try {
+                JSONObject table = new JSONObject(jsonResponse);
+                callback.onGalleryResult(table);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } else {
+            callback.onGalleryResult(null);
         }
     }
 

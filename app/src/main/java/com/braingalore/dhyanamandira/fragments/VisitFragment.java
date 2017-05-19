@@ -17,6 +17,7 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.crash.FirebaseCrash;
 
 /**
  * Created by s92 on 5/4/2017.
@@ -34,12 +35,16 @@ public class VisitFragment extends Fragment implements OnMapReadyCallback {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.visit_fragment, vg, false);
 
+        try {
         /*mMapView = (MapView)view.findViewById(R.id.mapview);
         mMapView.getMapAsync(this);*/
-        MapFragment mapFragment = (MapFragment) getChildFragmentManager()
-                .findFragmentById(R.id.map_fragment);
-        if(mapFragment!=null) {
-            mapFragment.getMapAsync(this);
+            MapFragment mapFragment = (MapFragment) getChildFragmentManager()
+                    .findFragmentById(R.id.map_fragment);
+            if (mapFragment != null) {
+                mapFragment.getMapAsync(this);
+            }
+        } catch (Exception e) {
+            FirebaseCrash.report(new Exception("Error in maps " + e));
         }
 
         webView = (WebView) view.findViewById(R.id.postal_webview);

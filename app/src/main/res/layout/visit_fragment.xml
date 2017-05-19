@@ -20,37 +20,39 @@
         app:layout_constraintTop_toTopOf="parent"
         card_view:cardCornerRadius="4dp">
 
-        <RelativeLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:layout_margin="10dp">
+            android:layout_height="match_parent">
 
-            <!--<com.google.android.maps.MapView
-                android:id="@+id/mapview"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:apiKey="AIzaSyAFomstqW7qljXgciMLnHBiNWN6fhMPSY0"
-                android:clickable="true"
-                android:enabled="true"
-                />-->
-            <fragment
-                android:id="@+id/map_fragment"
-                android:name="com.google.android.gms.maps.MapFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_above="@+id/postal_webview"
-                />
-
-            <WebView
-                android:id="@+id/postal_webview"
-                android:layout_width="match_parent"
-                android:layout_alignParentBottom="true"
                 android:layout_margin="10dp"
-                android:gravity="bottom"
-                android:layout_height="wrap_content" />
+                android:orientation="vertical">
 
-                </RelativeLayout>
+                <!--<com.google.android.maps.MapView
+                    android:id="@+id/mapview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:apiKey="AIzaSyAFomstqW7qljXgciMLnHBiNWN6fhMPSY0"
+                    android:clickable="true"
+                    android:enabled="true"
+                    />-->
+                <fragment
+                    android:id="@+id/map_fragment"
+                    android:name="com.google.android.gms.maps.MapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp" />
 
+                <WebView
+                    android:id="@+id/postal_webview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp" />
+
+
+            </LinearLayout>
+        </ScrollView>
     </android.support.v7.widget.CardView>
 
 </android.support.constraint.ConstraintLayout>
