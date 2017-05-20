@@ -2,28 +2,20 @@ package com.braingalore.dhyanamandira.fragments;
 
 import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.content.res.AssetManager;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.GridView;
 
-import com.braingalore.dhyanamandira.AsyncResult;
-import com.braingalore.dhyanamandira.HomeActivity;
 import com.braingalore.dhyanamandira.R;
-import com.braingalore.dhyanamandira.adapter.GalleryAdapter;
+import com.braingalore.dhyanamandira.adapter.GalleryGridViewAdapter;
 import com.braingalore.dhyanamandira.model.GalleryObject;
-import com.braingalore.dhyanamandira.spreadsheetreader.GalleryReader;
-import com.braingalore.dhyanamandira.utils.DividerItemDecoration;
 import com.google.firebase.crash.FirebaseCrash;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,73 +27,45 @@ public class GalleryFragment extends Fragment {
 
     RecyclerView galleryItemList;
 
-    GalleryAdapter galleryAdapter;
+    GalleryGridViewAdapter galleryAdapter;
 
     List<GalleryObject> galleryObjectList;
 
     ProgressDialog pDialog;
 
+    GridView gridView;
+
     public View onCreateView(LayoutInflater inflater, ViewGroup vg,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.recycler_view_layout, vg, false);
-        galleryItemList = (RecyclerView) view.findViewById(R.id.recycler_view);
-        galleryItemList.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
-        if (((HomeActivity) getActivity()).isNetworkAvailable()) {
-            pDialog = new ProgressDialog(getActivity());
-            pDialog.setCancelable(false);
-            pDialog.setMessage("Loading...");
-            pDialog.show();
-            new GalleryReader(new AsyncResult() {
-                @Override
-                public void onCommentsResult(JSONObject object) {
+        View view = inflater.inflate(R.layout.grid_view_layout, vg, false);
+        gridView = (GridView) view.findViewById(R.id.gallery_grid);
 
-                }
-
-                @Override
-                public void onGalleryResult(JSONObject object) {
-                    galleryObjectList = prepareGallerydata(object);
-                    galleryAdapter = new GalleryAdapter(galleryObjectList);
-                    RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
-                    galleryItemList.setLayoutManager(mLayoutManager);
-                    //commentsList.setItemAnimator(new DefaultItemAnimator());
-                    galleryItemList.setAdapter(galleryAdapter);
-                    if (pDialog != null && pDialog.isShowing()) {
-                        pDialog.dismiss();
-                    }
-                    galleryAdapter.notifyDataSetChanged();
-                }
-
-                @Override
-                public void onEventsResult(JSONObject object) {
-
-                }
-            }).execute("");
-        } else {
-            Toast.makeText(getActivity(), "Please connect to internet to proceed...", Toast.LENGTH_SHORT).show();
+        ArrayList<String> filePaths = getFilePaths();
+        try {
+            if (!filePaths.isEmpty()) {
+                galleryAdapter = new GalleryGridViewAdapter(getActivity(), R.layout.grid_item, filePaths, gridView);
+                gridView.setAdapter(galleryAdapter);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return view;
     }
 
-    private List<GalleryObject> prepareGallerydata(JSONObject object) {
-        galleryObjectList = new ArrayList<GalleryObject>();
-        if (object != null) {
-            try {
-                JSONArray rows = object.getJSONArray("rows");
+    private ArrayList<String> getFilePaths() {
+        ArrayList<String> uris = new ArrayList<>();
+        AssetManager assetManager = getActivity().getAssets();
+        try {
+            String[] files = assetManager.list("gallery_images");
 
-                for (int r = 0; r < rows.length(); ++r) {
-                    JSONObject row = rows.getJSONObject(r);
-                    JSONArray columns = row.getJSONArray("c");
-                    String desc = columns.getJSONObject(0).getString("v");
-                    String link = columns.getJSONObject(1).getString("v");
-                    if (!TextUtils.isEmpty(desc) && !TextUtils.isEmpty(link) && !link.equals("link"))
-                        galleryObjectList.add(new GalleryObject(desc, link));
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
+            for (String strImageName : files) {
+                String pathAssets = "gallery_images" + File.separator + strImageName;
+                uris.add(pathAssets);
+
             }
-        } else {
-            FirebaseCrash.report(new Exception("Gallery JSON object null"));
+        } catch (Exception e) {
+            FirebaseCrash.report(new Exception("Exception while getting asset URIs" + e));
         }
-        return galleryObjectList;
+        return uris;
     }
 }
