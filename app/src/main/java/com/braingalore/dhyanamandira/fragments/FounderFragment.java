@@ -18,7 +18,7 @@ import com.braingalore.dhyanamandira.utils.AnimUtils;
 
 public class FounderFragment extends Fragment {
 
-    String aboutSir = "<html><body style=\"text-align:justify\"><i>Rajkumar Gour is the Mukhya Shikshaka of the Dhyana Mandira Yoga Kendra center. He is a selfless person preaching YOGA at his own interest. He is a working professional. During mornings he preaches YOGA for the wellness of human beings.</i></body></Html>";
+    String aboutSir = "<html><body style=\"text-align:justify\"><i>\"Shri Rajkumar Gour\" is Mukhya Yoga Shikshaka and Chief Administrator at \"Dhyana Mandira\". He chose Yoga as a path of service in the year 2009 and has provided yoga coaching to more than 5500 people as of now. He is a Yoga Pracharak and Yoga Shikshaka. His service in the yoga field through this Dhyana Mandira is great inspiration and motivation for the people who gets associated with this yoga kendra. Many lives have changed with his way of yoga teachings and thus his service is a noticeable contribution to the society. His selfless and constant efforts have made \"Dhyana Mandira\" - as an epicenter of Yoga in this region of Bangalore.</i></body></Html>";
 
     private WebView aboutSirView;
 
