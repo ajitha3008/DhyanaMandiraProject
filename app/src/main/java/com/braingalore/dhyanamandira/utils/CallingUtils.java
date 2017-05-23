@@ -13,6 +13,7 @@ import android.telephony.TelephonyManager;
 import android.view.View;
 
 import com.braingalore.dhyanamandira.Constants;
+import com.google.firebase.crash.FirebaseCrash;
 
 /**
  * Created by s92 on 5/4/2017.
@@ -37,7 +38,7 @@ public class CallingUtils {
 
     public static void dialIntent(Context context, String number, View view) {
         if (checkCallPermission(context)) {
-            //FirebaseCrash.log("Trying to call");
+            FirebaseCrash.log("Calling");
             Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number));
             context.startActivity(intent);
         } else {
