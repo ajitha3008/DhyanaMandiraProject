@@ -96,7 +96,7 @@ public class EventsFragment extends Fragment {
                     String date = columns.getJSONObject(2).getString("v");
                     String description = columns.getJSONObject(3).getString("v");
                     if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(location) && !TextUtils.isEmpty(date) && !TextUtils.isEmpty(description) && !name.equals("name"))
-                        eventsObjectList.add(new EventsObject(name, location, date, description));
+                        eventsObjectList.add(new EventsObject(name, "Location:" + location, "Date:" + date, "Description:" + description));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

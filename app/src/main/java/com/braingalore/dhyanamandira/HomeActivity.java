@@ -83,7 +83,7 @@ public class HomeActivity extends AppCompatActivity
                 if (CallingUtils.isSimPresent(HomeActivity.this)) {
                     CallingUtils.dialIntent(HomeActivity.this, "+918123848682", view);
                 } else {
-                    Snackbar.make(view, "Insert SIM card to call Dhyana Mandira - Rajkumar", Snackbar.LENGTH_LONG)
+                    Snackbar.make(view, "Insert SIM card to call Rajkumar", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 }
             }
