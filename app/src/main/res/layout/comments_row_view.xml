@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center|center_horizontal"
     android:background="@android:color/white"
+    android:gravity="center|center_horizontal"
     android:orientation="vertical">
 
     <RatingBar
@@ -14,22 +14,21 @@
         android:numStars="5"
         android:scaleX="0.4"
         android:scaleY="0.4"
-        android:theme="@style/RatingBar"/>
+        android:theme="@style/RatingBar" />
 
     <TextView
         android:id="@+id/commentator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
+        android:padding="5dp"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
-        android:padding="5dp" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/actual_comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="5dp"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
-        android:textStyle="italic"
-        android:textSize="16dp"
-        android:padding="5dp" />
+        android:textSize="16dp" />
 </LinearLayout>

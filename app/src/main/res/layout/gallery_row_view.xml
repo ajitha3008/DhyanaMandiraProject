@@ -19,7 +19,7 @@
         android:autoLink="all"
         android:linksClickable="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
         android:textStyle="italic"
         android:textSize="16dp"

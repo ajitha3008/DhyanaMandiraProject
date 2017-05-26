@@ -25,7 +25,7 @@ import com.google.firebase.crash.FirebaseCrash;
 
 public class VisitFragment extends Fragment implements OnMapReadyCallback {
 
-    String postalAddress = "<html><body style=\"text-align:justify\">Click on the marker above to get directions<i><br><br><b>PostalAddress:</b><br>Rajkumar G<br>Mukhya Shikshaka<br>Dhyana Mandira Yoga Kendra<br>Shri Someshwara(Shiva) Temple,<br>Madiwala,<br>BTM 1st Stage,<br>Bangalore,<br>560068</i></body></Html>";
+    String postalAddress = "<html><body style=\"text-align:justify\">Click on the marker above to get directions<br><br><b>PostalAddress:</b><br>Rajkumar G<br>Mukhya Shikshaka<br>Dhyana Mandira Yoga Kendra<br>Shri Someshwara(Shiva) Temple,<br>Madiwala,<br>BTM 1st Stage,<br>Bangalore,<br>560068</body></Html>";
 
     private WebView webView;
 

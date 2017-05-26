@@ -16,7 +16,7 @@ import com.braingalore.dhyanamandira.utils.AnimUtils;
  */
 
 public class CostFragment extends Fragment {
-    String registrationCost = "<html><body style=\"text-align:justify\"><i>The yoga school operates on free of cost. But to maintain the premises and ensure the candidates registration, there is a minimal one time payment of Rs.100/- collected from every candidate on joining.</i></body></Html>";
+    String registrationCost = "<html><body style=\"text-align:justify\">The yoga school operates on free of cost. But to maintain the premises and ensure the candidates registration, there is a minimal one time payment of Rs.100/- collected from every candidate on joining.</body></Html>";
 
     private WebView webView;
 

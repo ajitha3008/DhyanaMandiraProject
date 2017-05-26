@@ -28,7 +28,7 @@ import com.facebook.share.widget.ShareButton;
 
 public class FacebookLikeFragment extends Fragment {
 
-    String content = "<html><body style=\"text-align:justify\"><i>Share and like us in facebook.</i></body></Html>";
+    String content = "<html><body style=\"text-align:justify\">Share and like us in facebook.</body></Html>";
 
     private WebView contentView;
     private LikeView likeview;

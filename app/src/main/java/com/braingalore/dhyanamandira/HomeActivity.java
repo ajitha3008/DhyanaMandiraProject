@@ -4,10 +4,12 @@ import android.app.Dialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -15,8 +17,10 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -52,12 +56,14 @@ public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     FragmentManager fm;
     FragmentTransaction fragmentTransaction;
+    Intent intent;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //for testing
         //FirebaseCrash.log("Activity created");
@@ -65,7 +71,7 @@ public class HomeActivity extends AppCompatActivity
         //FirebaseCrash.report(new Exception("My first Android non-fatal error"));
 
         fm = getFragmentManager();
-
+        intent = getIntent();
         try {
             fragmentTransaction = fm.beginTransaction();
             AboutFragment f1 = new AboutFragment();
@@ -81,7 +87,7 @@ public class HomeActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 if (CallingUtils.isSimPresent(HomeActivity.this)) {
-                    CallingUtils.dialIntent(HomeActivity.this, "+918123848682", view);
+                    CallingUtils.dialIntent(HomeActivity.this, "+917349782713", view);
                 } else {
                     Snackbar.make(view, "Insert SIM card to call Rajkumar", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
@@ -97,6 +103,28 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        if (Constants.FIREBASE_ACTION.equals(intent.getAction())) {
+            String title = intent.getStringExtra(Constants.FIREBASE_TITLE);
+            String body = intent.getStringExtra(Constants.FIREBASE_BODY);
+            if (!TextUtils.isEmpty(body)) {
+                AlertDialog.Builder builder;
+                builder = new AlertDialog.Builder(this);
+                if (!TextUtils.isEmpty(title)) {
+                    builder.setTitle(title);
+                } else {
+                    builder.setTitle("Dhyana Mandira");
+                }
+                builder.setMessage(body)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .setIcon(getResources().getDrawable(R.mipmap.ic_launcher))
+                        .show();
+            }
+        }
     }
 
     @Override
@@ -120,32 +148,38 @@ public class HomeActivity extends AppCompatActivity
                 AboutFragment f1 = new AboutFragment();
                 fragmentTransaction.replace(R.id.fragment_container, f1);
                 fragmentTransaction.commitAllowingStateLoss();
+                toolbar.setTitle("Dhyana Mandira Yoga Kendra");
             }
             if (id == R.id.nav_about_founder) {
                 fragmentTransaction = fm.beginTransaction();
                 FounderFragment f1 = new FounderFragment();
                 fragmentTransaction.replace(R.id.fragment_container, f1);
                 fragmentTransaction.commitAllowingStateLoss();
+                toolbar.setTitle("Founder");
             } else if (id == R.id.nav_events) {
                 fragmentTransaction = fm.beginTransaction();
                 EventsFragment f1 = new EventsFragment();
                 fragmentTransaction.replace(R.id.fragment_container, f1);
                 fragmentTransaction.commitAllowingStateLoss();
+                toolbar.setTitle("Events");
             } else if (id == R.id.nav_cost_involved) {
                 fragmentTransaction = fm.beginTransaction();
                 CostFragment f1 = new CostFragment();
                 fragmentTransaction.replace(R.id.fragment_container, f1);
                 fragmentTransaction.commitAllowingStateLoss();
+                toolbar.setTitle("Fee");
             } else if (id == R.id.nav_gallery) {
                 fragmentTransaction = fm.beginTransaction();
                 GalleryFragment f1 = new GalleryFragment();
                 fragmentTransaction.replace(R.id.fragment_container, f1);
                 fragmentTransaction.commitAllowingStateLoss();
+                toolbar.setTitle("Gallery");
             } else if (id == R.id.nav_experiences) {
                 fragmentTransaction = fm.beginTransaction();
                 CommentsFragment f1 = new CommentsFragment();
                 fragmentTransaction.replace(R.id.fragment_container, f1);
                 fragmentTransaction.commitAllowingStateLoss();
+                toolbar.setTitle("Comments");
             } else if (id == R.id.nav_mail) {
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -159,11 +193,13 @@ public class HomeActivity extends AppCompatActivity
                 CallOptionsFragment f1 = new CallOptionsFragment();
                 fragmentTransaction.replace(R.id.fragment_container, f1);
                 fragmentTransaction.commitAllowingStateLoss();
+                toolbar.setTitle("Call");
             } else if (id == R.id.nav_visit) {
                 fragmentTransaction = fm.beginTransaction();
                 VisitFragment f1 = new VisitFragment();
                 fragmentTransaction.replace(R.id.fragment_container, f1);
                 fragmentTransaction.commitAllowingStateLoss();
+                toolbar.setTitle("Visit");
             } else if (false/*id == R.id.nav_feedback*/) {
                 final Dialog dialog = new Dialog(this);
                 dialog.setContentView(R.layout.feedback_fragment);
@@ -192,6 +228,7 @@ public class HomeActivity extends AppCompatActivity
                 FacebookLikeFragment f1 = new FacebookLikeFragment();
                 fragmentTransaction.replace(R.id.fragment_container, f1);
                 fragmentTransaction.commitAllowingStateLoss();
+                toolbar.setTitle("Like & Share");
             } else if (id == R.id.nav_share) {
                 Intent shareIntent = new Intent(Intent.ACTION_SEND);
                 shareIntent.setType("text/plain");

@@ -17,6 +17,7 @@
         <activity
             android:name=".HomeActivity"
             android:label="@string/app_name"
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -25,8 +26,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GalleryFullScreenPreview"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".GalleryFullScreenPreview"
+            android:screenOrientation="portrait" />
 
         <service android:name=".services.FirebaseMessageReceiverService">
             <intent-filter>
@@ -40,6 +42,9 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_stat_notif_icon_firebase" />
         <!-- TODO: release key generation for facebook -->
         <provider
             android:name="com.facebook.FacebookContentProvider"
