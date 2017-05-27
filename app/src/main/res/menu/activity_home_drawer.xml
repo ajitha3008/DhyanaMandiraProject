@@ -17,7 +17,7 @@
         <item
             android:id="@+id/nav_cost_involved"
             android:icon="@drawable/ic_action_attach_money"
-            android:title="Registration fee" />
+            android:title="Registration" />
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_action_collections"

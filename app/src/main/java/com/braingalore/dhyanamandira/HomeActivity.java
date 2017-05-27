@@ -167,7 +167,7 @@ public class HomeActivity extends AppCompatActivity
                 CostFragment f1 = new CostFragment();
                 fragmentTransaction.replace(R.id.fragment_container, f1);
                 fragmentTransaction.commitAllowingStateLoss();
-                toolbar.setTitle("Fee");
+                toolbar.setTitle("Registration");
             } else if (id == R.id.nav_gallery) {
                 fragmentTransaction = fm.beginTransaction();
                 GalleryFragment f1 = new GalleryFragment();

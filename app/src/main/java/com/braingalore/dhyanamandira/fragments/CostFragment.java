@@ -16,7 +16,7 @@ import com.braingalore.dhyanamandira.utils.AnimUtils;
  */
 
 public class CostFragment extends Fragment {
-    String registrationCost = "<html><body style=\"text-align:justify\">The yoga school operates on free of cost. But to maintain the premises and ensure the candidates registration, there is a minimal one time payment of Rs.100/- collected from every candidate on joining.</body></Html>";
+    String registrationCost = "<html><body style=\"text-align:justify\">The secondary level of basic need for any human being is Health & Education. The ancient Indian value system provided these free-of-cost to everyone in the society. These were considered as fields of selfless service. \"Dhyana Mandira Yoga Kendra\" acknowledges these values and hence did not commercialize Yoga. Unlike other commercial yoga centers, there is NO monthly fees for providing training and venue for daily practise along with continued guidance for lifetime. Yoga aspirants can enroll for a Life-Time membership for just Rs.100/-</body></Html>";
 
     private WebView webView;
 
