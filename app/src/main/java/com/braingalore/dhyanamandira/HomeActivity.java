@@ -122,6 +122,7 @@ public class HomeActivity extends AppCompatActivity
                             }
                         })
                         .setIcon(getResources().getDrawable(R.mipmap.ic_launcher))
+                        .setCancelable(false)
                         .show();
             }
         }
