@@ -28,8 +28,6 @@ public class CallOptionsFragment extends Fragment {
         number1.setOnClickListener(clickListener);
         Button number2 = (Button) view.findViewById(R.id.number812);
         number2.setOnClickListener(clickListener);
-        Button number3 = (Button) view.findViewById(R.id.number959);
-        number3.setOnClickListener(clickListener);
         return view;
     }
 
@@ -42,9 +40,6 @@ public class CallOptionsFragment extends Fragment {
             }
             if (view.getId() == R.id.number743) {
                 numberToDial = "+917349782713";
-            }
-            if (view.getId() == R.id.number959) {
-                numberToDial = "+919916039959";
             }
             if (CallingUtils.isSimPresent(getActivity())) {
                 CallingUtils.dialIntent(getActivity(), numberToDial, view);

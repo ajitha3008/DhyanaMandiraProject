@@ -45,7 +45,7 @@ public class EventsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.recycler_view_layout, vg, false);
         eventRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-        eventRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
+        //eventRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
         if (((HomeActivity) getActivity()).isNetworkAvailable()) {
             pDialog = new ProgressDialog(getActivity());
             pDialog.setCancelable(false);

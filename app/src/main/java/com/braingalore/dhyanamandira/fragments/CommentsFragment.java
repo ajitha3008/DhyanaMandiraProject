@@ -45,7 +45,7 @@ public class CommentsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.recycler_view_layout, vg, false);
         commentsList = (RecyclerView) view.findViewById(R.id.recycler_view);
-        commentsList.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
+        //commentsList.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
         if (((HomeActivity) getActivity()).isNetworkAvailable()) {
             pDialog = new ProgressDialog(getActivity());
             pDialog.setCancelable(false);

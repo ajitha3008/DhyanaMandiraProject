@@ -26,6 +26,10 @@
             android:id="@+id/nav_experiences"
             android:icon="@drawable/ic_action_insert_comment"
             android:title="Comments received" />
+        <item
+            android:id="@+id/mantras"
+            android:icon="@drawable/ic_action_aum_mantra_symbol"
+            android:title="Mantras" />
         <!--        <item
                     android:id="@+id/nav_slideshow"
                     android:icon="@drawable/ic_menu_slideshow"

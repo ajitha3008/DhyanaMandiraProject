@@ -34,6 +34,7 @@ import com.braingalore.dhyanamandira.fragments.EventsFragment;
 import com.braingalore.dhyanamandira.fragments.FacebookLikeFragment;
 import com.braingalore.dhyanamandira.fragments.FounderFragment;
 import com.braingalore.dhyanamandira.fragments.GalleryFragment;
+import com.braingalore.dhyanamandira.fragments.MantrasFragment;
 import com.braingalore.dhyanamandira.fragments.VisitFragment;
 import com.braingalore.dhyanamandira.utils.CallingUtils;
 import com.google.firebase.crash.FirebaseCrash;
@@ -56,7 +57,6 @@ public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     FragmentManager fm;
     FragmentTransaction fragmentTransaction;
-    Intent intent;
     Toolbar toolbar;
 
     @Override
@@ -71,7 +71,6 @@ public class HomeActivity extends AppCompatActivity
         //FirebaseCrash.report(new Exception("My first Android non-fatal error"));
 
         fm = getFragmentManager();
-        intent = getIntent();
         try {
             fragmentTransaction = fm.beginTransaction();
             AboutFragment f1 = new AboutFragment();
@@ -103,18 +102,18 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
 
-        if (Constants.FIREBASE_ACTION.equals(intent.getAction())) {
-            String title = intent.getStringExtra(Constants.FIREBASE_TITLE);
-            String body = intent.getStringExtra(Constants.FIREBASE_BODY);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (Constants.FIREBASE_ACTION.equals(getIntent().getAction())) {
+            String title = getResources().getString(R.string.app_name);
+            String body = getIntent().getStringExtra(Constants.FIREBASE_BODY);
             if (!TextUtils.isEmpty(body)) {
                 AlertDialog.Builder builder;
                 builder = new AlertDialog.Builder(this);
-                if (!TextUtils.isEmpty(title)) {
-                    builder.setTitle(title);
-                } else {
-                    builder.setTitle("Dhyana Mandira");
-                }
+                builder.setTitle(title);
                 builder.setMessage(body)
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
@@ -238,6 +237,12 @@ public class HomeActivity extends AppCompatActivity
                 shareIntent.putExtra(Intent.EXTRA_SUBJECT, shareSubText);
                 shareIntent.putExtra(Intent.EXTRA_TEXT, shareBodyText);
                 startActivity(Intent.createChooser(shareIntent, "Share With"));
+            } else if(id==R.id.mantras) {
+                fragmentTransaction = fm.beginTransaction();
+                MantrasFragment f1 = new MantrasFragment();
+                fragmentTransaction.replace(R.id.fragment_container, f1);
+                fragmentTransaction.commitAllowingStateLoss();
+                toolbar.setTitle("Mantras");
             }
         } catch (Exception e) {
             FirebaseCrash.report(new Exception("Exception while committing consecutive fragments " + e));

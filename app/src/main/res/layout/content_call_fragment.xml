@@ -102,37 +102,6 @@
                         android:text="Call"
                         android:textColor="@android:color/white" />
                 </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
-                    android:elevation="3dp"
-                    android:orientation="horizontal"
-                    android:weightSum="4">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="3"
-                        android:padding="10dp"
-                        android:text="+919916039959"
-                        android:textAllCaps="true"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                        android:textSize="24dp" />
-
-                    <Button
-                        android:id="@+id/number959"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="5dp"
-                        android:layout_weight="1"
-                        android:background="@color/colorAccent"
-                        android:text="Call"
-                        android:textColor="@android:color/white" />
-                </LinearLayout>
             </LinearLayout>
         </ScrollView>
 
