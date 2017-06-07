@@ -7,6 +7,10 @@
             android:icon="@drawable/ic_action_info_outline"
             android:title="About" />
         <item
+            android:id="@+id/nav_cost_involved"
+            android:icon="@drawable/ic_action_attach_money"
+            android:title="Registration Formality" />
+        <item
             android:id="@+id/nav_about_founder"
             android:icon="@drawable/ic_action_person_outline"
             android:title="Founder" />
@@ -14,10 +18,6 @@
             android:id="@+id/nav_events"
             android:icon="@drawable/ic_action_event_note"
             android:title="Upcoming Batches/Events" />
-        <item
-            android:id="@+id/nav_cost_involved"
-            android:icon="@drawable/ic_action_attach_money"
-            android:title="Registration" />
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_action_collections"

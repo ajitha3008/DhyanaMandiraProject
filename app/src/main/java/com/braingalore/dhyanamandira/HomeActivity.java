@@ -168,7 +168,7 @@ public class HomeActivity extends AppCompatActivity
                 CostFragment f1 = new CostFragment();
                 fragmentTransaction.replace(R.id.fragment_container, f1);
                 fragmentTransaction.commitAllowingStateLoss();
-                toolbar.setTitle("Registration");
+                toolbar.setTitle("Registration Formality");
             } else if (id == R.id.nav_gallery) {
                 fragmentTransaction = fm.beginTransaction();
                 GalleryFragment f1 = new GalleryFragment();
@@ -184,7 +184,8 @@ public class HomeActivity extends AppCompatActivity
             } else if (id == R.id.nav_mail) {
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.setData(Uri.fromParts("mailto", "rajayogamadiwala@gmail.com", null));
+                intent.setData(Uri.fromParts("mailto", "rajkumargour10@gmail.com", null));
+                intent.putExtra(Intent.EXTRA_CC, new String[] { "rajayogamadiwala@gmail.com" });
                 intent.putExtra(Intent.EXTRA_SUBJECT, "DhyanaMandira :: Contact Us");
                 if (intent.resolveActivity(getPackageManager()) != null) {
                     startActivity(intent);

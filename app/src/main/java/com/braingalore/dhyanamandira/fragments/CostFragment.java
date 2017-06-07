@@ -16,7 +16,7 @@ import com.braingalore.dhyanamandira.utils.AnimUtils;
  */
 
 public class CostFragment extends Fragment {
-    String registrationCost = "<html><body style=\"text-align:justify\">We believe YOGA is a field of self-service. Hence, we have not commercialized Yoga. Yoga aspirants can take life time membership by paying only Rs.100/-. There is NO monthly fees for providing training & venue for daily practice. You will be provided a continued guidance for life time.<br><br>New people can join during new batches. Register for new batches through telephone call, SMS, Whatsapp or Email. Just send your Full name, Whatsapp number(preferably) and Email ID to the contact details provided. We will inform you about the dates for next new batch.<br><br>We have enough place for Yoga practise. Any number of people can join. Inform and spread to everyone you know.</body></Html>";
+    String registrationCost = "<html><body style=\"text-align:justify\">We believe YOGA is a field of service. Hence, we have not commercialized Yoga. Yoga aspirants can take life time membership by paying only Rs.100/-. There is NO monthly fees for providing training & venue for daily practise. You will be provided a continued guidance for life time.<br><br>New people can join during new batches. Register for new batches through telephone call, SMS, Whatsapp or Email. Just send your Full name, Whatsapp number(preferably) and Email ID to the contact details provided. We will inform you about the dates for next new batch.<br><br>We have enough place for Yoga practise. Any number of people can join. Inform and spread to everyone you know.</body></Html>";
 
     private WebView webView;
 
