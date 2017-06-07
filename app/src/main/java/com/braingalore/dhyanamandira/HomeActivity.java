@@ -125,6 +125,7 @@ public class HomeActivity extends AppCompatActivity
                         .show();
             }
         }
+        getIntent().setAction("");
     }
 
     @Override
