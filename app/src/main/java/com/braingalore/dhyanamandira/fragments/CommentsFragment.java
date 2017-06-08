@@ -84,7 +84,7 @@ public class CommentsFragment extends Fragment {
 
     private List<CommentObject> prepareCommentData(JSONObject object) {
         commentObjectList = new ArrayList<CommentObject>();
-        /*commentObjectList.add(new CommentObject(5, "Ajitha Yasmin","Excellent place to practise Yoga. Selfless master inspires lot of lives by his service and effort... The experience you gain here will definitely change your habits. Totally worth the time. Please join without any second thoughts.\n"));
+        /*commentObjectList.add(new CommentObject(5, "Ajitha Yasmin","Excellent place to practice Yoga. Selfless master inspires lot of lives by his service and effort... The experience you gain here will definitely change your habits. Totally worth the time. Please join without any second thoughts.\n"));
         commentObjectList.add(new CommentObject(5, "Sushil Shah ","Amazing team, amazing environment, getting yoga lessons in front of Adiyogi it cant get better than this.\n"));
         commentObjectList.add(new CommentObject(5, "Manoj Km","Perfect Place for doing Yoga early morning @ Siva temple .. Excellent Guru... Nice Group, Good environment...\n"));
         commentObjectList.add(new CommentObject(5, "Chirag Ojha","A free service to the public provide by dedicated people bringing changes that are so positive and refreshing. Yoga is the way of life.. !!\n"));
