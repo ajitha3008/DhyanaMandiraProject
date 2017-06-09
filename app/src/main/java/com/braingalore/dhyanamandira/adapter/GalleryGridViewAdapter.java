@@ -12,6 +12,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.braingalore.dhyanamandira.Constants;
 import com.braingalore.dhyanamandira.GalleryFullScreenPreview;
 import com.braingalore.dhyanamandira.R;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -89,89 +90,89 @@ public class GalleryGridViewAdapter extends BaseAdapter {
     private String getTitle(String fileName) {
         String trimmedFileNamewithExtension = fileName.substring(fileName.lastIndexOf("/") + 1);
         String trimmedFileName = trimmedFileNamewithExtension.substring(0, trimmedFileNamewithExtension.lastIndexOf('.'));
-        if(trimmedFileName.equals("image_1")) {
+        if (trimmedFileName.equals("image_1")) {
             return "Meditation@Lalbaugh";
-        } else if(trimmedFileName.equals("image_2")) {
+        } else if (trimmedFileName.equals("image_2")) {
             return "FunGames1";
-        } else if(trimmedFileName.equals("image_3")) {
+        } else if (trimmedFileName.equals("image_3")) {
             return "Gomaatha Pooja";
-        } else if(trimmedFileName.equals("image_4")) {
+        } else if (trimmedFileName.equals("image_4")) {
             return "Meditation@Lalbaugh1";
-        } else if(trimmedFileName.equals("image_5")) {
+        } else if (trimmedFileName.equals("image_5")) {
             return "Independence Day Celebration1";
-        } else if(trimmedFileName.equals("image_6")) {
+        } else if (trimmedFileName.equals("image_6")) {
             return "Independence Day Celebration2";
-        } else if(trimmedFileName.equals("image_7")) {
+        } else if (trimmedFileName.equals("image_7")) {
             return "Independence Day Celebration3";
-        } else if(trimmedFileName.equals("image_8")) {
+        } else if (trimmedFileName.equals("image_8")) {
             return "Independence Day Celebration4";
-        } else if(trimmedFileName.equals("image_9")) {
+        } else if (trimmedFileName.equals("image_9")) {
             return "Moon light dinner";
-        } else if(trimmedFileName.equals("image_10")) {
+        } else if (trimmedFileName.equals("image_10")) {
             return "Mud bath1";
-        } else if(trimmedFileName.equals("image_11")) {
+        } else if (trimmedFileName.equals("image_11")) {
             return "Mud bath2";
-        } else if(trimmedFileName.equals("image_12")) {
+        } else if (trimmedFileName.equals("image_12")) {
             return "Nature meditation";
-        } else if(trimmedFileName.equals("image_13")) {
+        } else if (trimmedFileName.equals("image_13")) {
             return "Nature meditation1";
-        } else if(trimmedFileName.equals("image_14")) {
+        } else if (trimmedFileName.equals("image_14")) {
             return "New batch inauguration";
-        } else if(trimmedFileName.equals("image_15")) {
+        } else if (trimmedFileName.equals("image_15")) {
             return "New batch inauguration2";
-        } else if(trimmedFileName.equals("image_16")) {
+        } else if (trimmedFileName.equals("image_16")) {
             return "Ragi ball food";
-        } else if(trimmedFileName.equals("image_17")) {
+        } else if (trimmedFileName.equals("image_17")) {
             return "Rakshabandhana";
-        } else if(trimmedFileName.equals("image_18")) {
+        } else if (trimmedFileName.equals("image_18")) {
             return "Raw food1";
-        } else if(trimmedFileName.equals("image_19")) {
+        } else if (trimmedFileName.equals("image_19")) {
             return "Sahabhojana1";
-        } else if(trimmedFileName.equals("image_20")) {
+        } else if (trimmedFileName.equals("image_20")) {
             return "Sahabhojana2";
-        } else if(trimmedFileName.equals("image_21")) {
+        } else if (trimmedFileName.equals("image_21")) {
             return "Sahabhojana";
-        } else if(trimmedFileName.equals("image_22")) {
+        } else if (trimmedFileName.equals("image_22")) {
             return "Spiritual picnic2";
-        } else if(trimmedFileName.equals("image_23")) {
+        } else if (trimmedFileName.equals("image_23")) {
             return "Spritual Picnic";
-        } else if(trimmedFileName.equals("image_24")) {
+        } else if (trimmedFileName.equals("image_24")) {
             return "Sun Rise Veekshane";
-        } else if(trimmedFileName.equals("image_25")) {
+        } else if (trimmedFileName.equals("image_25")) {
             return "SuryaNamaskara1";
-        } else if(trimmedFileName.equals("image_26")) {
+        } else if (trimmedFileName.equals("image_26")) {
             return "Swacchata Service";
-        } else if(trimmedFileName.equals("image_27")) {
+        } else if (trimmedFileName.equals("image_27")) {
             return "Swamy Vivekananda Jayanthi";
-        } else if(trimmedFileName.equals("image_28")) {
+        } else if (trimmedFileName.equals("image_28")) {
             return "Therapy1";
-        } else if(trimmedFileName.equals("image_29")) {
+        } else if (trimmedFileName.equals("image_29")) {
             return "Therapy1";
-        } else if(trimmedFileName.equals("image_30")) {
+        } else if (trimmedFileName.equals("image_30")) {
             return "Sakleshpur train trip";
-        } else if(trimmedFileName.equals("image_31")) {
+        } else if (trimmedFileName.equals("image_31")) {
             return "Trekking";
-        } else if(trimmedFileName.equals("image_32")) {
+        } else if (trimmedFileName.equals("image_32")) {
             return "Trekking1";
-        } else if(trimmedFileName.equals("image_33")) {
+        } else if (trimmedFileName.equals("image_33")) {
             return "Trekking2";
-        } else if(trimmedFileName.equals("image_34")) {
+        } else if (trimmedFileName.equals("image_34")) {
             return "Trekking3";
-        } else if(trimmedFileName.equals("image_35")) {
+        } else if (trimmedFileName.equals("image_35")) {
             return "Trekking4";
-        } else if(trimmedFileName.equals("image_36")) {
+        } else if (trimmedFileName.equals("image_36")) {
             return "Trekking5";
-        } else if(trimmedFileName.equals("image_37")) {
+        } else if (trimmedFileName.equals("image_37")) {
             return "With Orphans";
-        } else if(trimmedFileName.equals("image_38")) {
+        } else if (trimmedFileName.equals("image_38")) {
             return "Yoga family Tour1";
-        } else if(trimmedFileName.equals("image_39")) {
+        } else if (trimmedFileName.equals("image_39")) {
             return "Yoga family Tour2";
-        } else if(trimmedFileName.equals("image_40")) {
+        } else if (trimmedFileName.equals("image_40")) {
             return "Yoga family Tour3";
-        } else if(trimmedFileName.equals("image_41")) {
+        } else if (trimmedFileName.equals("image_41")) {
             return "Yoga family Tour4";
-        } else if(trimmedFileName.equals("image_42")) {
+        } else if (trimmedFileName.equals("image_42")) {
             return "Yogi as a farmer";
         } else {
             return "Image";
@@ -192,8 +193,8 @@ public class GalleryGridViewAdapter extends BaseAdapter {
             // on selecting grid view image
             // launch full screen activity
             Intent i = new Intent(context, GalleryFullScreenPreview.class);
-            i.putExtra("title",getTitle(griRowItems.get(_postion)));
-            i.putExtra("itemuri", griRowItems.get(_postion));
+            i.putExtra(Constants.GRID_TITLE, getTitle(griRowItems.get(_postion)));
+            i.putExtra(Constants.GRID_URI, griRowItems.get(_postion));
             context.startActivity(i);
         }
 

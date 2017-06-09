@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -185,7 +184,7 @@ public class HomeActivity extends AppCompatActivity
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.setData(Uri.fromParts("mailto", "rajkumargour10@gmail.com", null));
-                intent.putExtra(Intent.EXTRA_CC, new String[] { "rajayogamadiwala@gmail.com" });
+                intent.putExtra(Intent.EXTRA_CC, new String[]{"rajayogamadiwala@gmail.com"});
                 intent.putExtra(Intent.EXTRA_SUBJECT, "DhyanaMandira :: Contact Us");
                 if (intent.resolveActivity(getPackageManager()) != null) {
                     startActivity(intent);
@@ -239,7 +238,7 @@ public class HomeActivity extends AppCompatActivity
                 shareIntent.putExtra(Intent.EXTRA_SUBJECT, shareSubText);
                 shareIntent.putExtra(Intent.EXTRA_TEXT, shareBodyText);
                 startActivity(Intent.createChooser(shareIntent, "Share With"));
-            } else if(id==R.id.mantras) {
+            } else if (id == R.id.mantras) {
                 fragmentTransaction = fm.beginTransaction();
                 MantrasFragment f1 = new MantrasFragment();
                 fragmentTransaction.replace(R.id.fragment_container, f1);

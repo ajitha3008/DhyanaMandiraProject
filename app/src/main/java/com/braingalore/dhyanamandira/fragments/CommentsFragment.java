@@ -122,6 +122,7 @@ public class CommentsFragment extends Fragment {
                 e.printStackTrace();
             }
         } else {
+            Toast.makeText(getActivity(), "Unable to fetch data. Please try again!", Toast.LENGTH_SHORT).show();
             FirebaseCrash.report(new Exception("Comments JSON object null"));
         }
         return commentObjectList;

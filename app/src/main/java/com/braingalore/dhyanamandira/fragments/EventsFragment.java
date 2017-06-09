@@ -102,6 +102,7 @@ public class EventsFragment extends Fragment {
                 e.printStackTrace();
             }
         } else {
+            Toast.makeText(getActivity(), "Unable to fetch data. Please try again!", Toast.LENGTH_SHORT).show();
             FirebaseCrash.report(new Exception("Events JSON object null"));
         }
         //eventsObjectList.add(new EventsObject("Event Name : New Batch","Event Location : Someshwara Temple","Event Date : May 16, 2017","Event Desc : New batch of Yoga starts!"));

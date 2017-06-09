@@ -40,7 +40,7 @@ public class GalleryFullScreenPreview extends Activity {
                 onBackPressed();
             }
         });
-        String title = getIntent().getStringExtra("title");
+        String title = getIntent().getStringExtra(Constants.GRID_TITLE);
         TextView titleView = (TextView) findViewById(R.id.title);
         titleView.setText(title);
         imageLoader = ImageLoader.getInstance();
@@ -50,7 +50,7 @@ public class GalleryFullScreenPreview extends Activity {
                 .displayer(new FadeInBitmapDisplayer(500)) //fade in images
                 .resetViewBeforeLoading()
                 .build();
-        String uriString = getIntent().getStringExtra("itemuri");
+        String uriString = getIntent().getStringExtra(Constants.GRID_URI);
         imageView = (ImageView) findViewById(R.id.imgDisplay);
         String tempStr = "assets://" + uriString;
         lazyLoading(imageLoader, tempStr, imageView, options);

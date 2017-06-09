@@ -9,4 +9,6 @@ public class Constants {
     public static final String FIREBASE_ACTION = "com.braingalore.dhyanamandira.firebase";
     public static final String FIREBASE_TITLE = "firebase_title";
     public static final String FIREBASE_BODY = "firebase_body";
+    public static final String GRID_TITLE = "title";
+    public static final String GRID_URI = "itemuri";
 }
