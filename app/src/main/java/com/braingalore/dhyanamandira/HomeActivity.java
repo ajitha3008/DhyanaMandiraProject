@@ -26,7 +26,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.braingalore.dhyanamandira.fragments.AbhyasasExpandableFragment;
-import com.braingalore.dhyanamandira.fragments.AbhyasasFragment;
 import com.braingalore.dhyanamandira.fragments.AboutFragment;
 import com.braingalore.dhyanamandira.fragments.AstangaYogaFragment;
 import com.braingalore.dhyanamandira.fragments.CallOptionsFragment;
@@ -265,7 +264,7 @@ public class HomeActivity extends AppCompatActivity
                 fragmentTransaction.commitAllowingStateLoss();
                 toolbar.setTitle("Astanga Yoga");
                 fab.setVisibility(View.VISIBLE);
-            }else if (id == R.id.dhyana_mandira) {
+            } else if (id == R.id.dhyana_mandira) {
                 fragmentTransaction = fm.beginTransaction();
                 DhyanaMandiraPlatformFragment f1 = new DhyanaMandiraPlatformFragment();
                 fragmentTransaction.replace(R.id.fragment_container, f1);

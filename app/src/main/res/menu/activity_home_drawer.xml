@@ -11,21 +11,10 @@
             android:icon="@drawable/ic_action_attach_money"
             android:title="@string/registration_formality" />
         <item
-            android:id="@+id/nav_about_founder"
-            android:icon="@drawable/ic_action_person_outline"
-            android:title="@string/founder" />
-        <item
             android:id="@+id/nav_events"
             android:icon="@drawable/ic_action_event_note"
             android:title="@string/upcoming_events" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_action_collections"
-            android:title="@string/gallery" />
-        <item
-            android:id="@+id/nav_experiences"
-            android:icon="@drawable/ic_action_insert_comment"
-            android:title="@string/comments_received" />
+
         <!--        <item
                     android:id="@+id/nav_slideshow"
                     android:icon="@drawable/ic_menu_slideshow"
@@ -35,7 +24,6 @@
                     android:icon="@drawable/ic_menu_manage"
                     android:title="Tools" />-->
     </group>
-
     <item android:title="@string/title_yoga">
         <menu>
             <item
@@ -44,7 +32,7 @@
                 android:title="@string/ashtanga_yoga" />
             <item
                 android:id="@+id/dhyana_mandira"
-                android:icon="@drawable/ic_action_vrick"
+                android:icon="@drawable/ic_action_vrik"
                 android:title="@string/platform_to_transform" />
 
             <item
@@ -55,9 +43,25 @@
                 android:id="@+id/mantras"
                 android:icon="@drawable/ic_action_aum_mantra_symbol"
                 android:title="@string/mantras" />
-            </menu>
+        </menu>
     </item>
 
+    <item android:title="@string/highlights">
+        <menu>
+            <item
+                android:id="@+id/nav_about_founder"
+                android:icon="@drawable/ic_action_person_outline"
+                android:title="@string/founder" />
+            <item
+                android:id="@+id/nav_gallery"
+                android:icon="@drawable/ic_action_collections"
+                android:title="@string/gallery" />
+            <item
+                android:id="@+id/nav_experiences"
+                android:icon="@drawable/ic_action_insert_comment"
+                android:title="@string/comments_received" />
+        </menu>
+    </item>
     <item android:title="@string/contact_us">
         <menu>
             <item

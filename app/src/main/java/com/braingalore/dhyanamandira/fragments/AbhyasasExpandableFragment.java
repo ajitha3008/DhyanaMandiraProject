@@ -80,7 +80,6 @@ public class AbhyasasExpandableFragment extends Fragment {
         breathing_exercises.add("Shwana Shwasa Kriya");
         breathing_exercises.add("Katishwasa Kriya");
 
-
         List<String> body_joint_exercises = new ArrayList<String>();
         body_joint_exercises.add("Hastha-Paada Anguli Chalane (Hands & Legs Fingers)");
         body_joint_exercises.add("Paada Chalane & Bhramana (Ankle joints)");
@@ -171,8 +170,7 @@ public class AbhyasasExpandableFragment extends Fragment {
         sleeping_asanas.add("Sethu Bandhasana");
         sleeping_asanas.add("Jathara Parivartansana");
         sleeping_asanas.add("Anantasana");
-        sleeping_asanas.add("Chaturanga");
-        sleeping_asanas.add("Dandasana");
+        sleeping_asanas.add("Chaturanga Dandasana");
         sleeping_asanas.add("Oordhwa Mukha Dhanirasana");
         sleeping_asanas.add("Adhomukha Dhanurasana");
         sleeping_asanas.add("Matsyasana");
@@ -212,6 +210,7 @@ public class AbhyasasExpandableFragment extends Fragment {
         surya_namaskara_asanas.add("Bhujangasana");
         surya_namaskara_asanas.add("Adhomukha Shwanasana");
         surya_namaskara_asanas.add("Ekapada Prasaranasana");
+        surya_namaskara_asanas.add("Utthanasana");
         surya_namaskara_asanas.add("Oordhwa Namaskarasana");
         surya_namaskara_asanas.add("Namaskarasana");
 

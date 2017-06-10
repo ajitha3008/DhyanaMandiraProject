@@ -58,7 +58,8 @@ public class MantrasFragment extends Fragment {
         listDataHeader.add("Surya Namaskara Phalashruti Mantra");
         listDataHeader.add("Bhoo Namana Mantra");
         listDataHeader.add("Pranayama mantra");
-        listDataHeader.add("Shanti mantra(Ending)");
+        listDataHeader.add("Yoga mantra");
+        listDataHeader.add("Jyotir Mantra");
 
         // Adding child data
         List<String> shantiMantra = new ArrayList<String>();
@@ -184,7 +185,9 @@ public class MantrasFragment extends Fragment {
                 "the Life Force. O Prana, protect us, as the mother\n" +
                 "protects the child. Please give us the wealth\n" +
                 "& the intellect.");
-        pranayamaMantra.add("Mantra:\n" +
+
+        List<String> yogaMantra = new ArrayList<String>();
+        yogaMantra.add("Mantra:\n" +
                 "Yogena Chithasya Padenavacha\n" +
                 "Malam Shareerasya Cha Vaidyakenam\n" +
                 "Yopakarotham Pravarammuneena\n" +
@@ -221,6 +224,7 @@ public class MantrasFragment extends Fragment {
         listDataChild.put(listDataHeader.get(3), phalaShruthiMantra);
         listDataChild.put(listDataHeader.get(4), bhuNamanaMantra);
         listDataChild.put(listDataHeader.get(5), pranayamaMantra);
-        listDataChild.put(listDataHeader.get(6), shantiMantraEnding);
+        listDataChild.put(listDataHeader.get(6), yogaMantra);
+        listDataChild.put(listDataHeader.get(7), shantiMantraEnding);
     }
 }
