@@ -25,10 +25,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.braingalore.dhyanamandira.fragments.AbhyasasExpandableFragment;
+import com.braingalore.dhyanamandira.fragments.AbhyasasFragment;
 import com.braingalore.dhyanamandira.fragments.AboutFragment;
+import com.braingalore.dhyanamandira.fragments.AstangaYogaFragment;
 import com.braingalore.dhyanamandira.fragments.CallOptionsFragment;
 import com.braingalore.dhyanamandira.fragments.CommentsFragment;
 import com.braingalore.dhyanamandira.fragments.CostFragment;
+import com.braingalore.dhyanamandira.fragments.DhyanaMandiraPlatformFragment;
 import com.braingalore.dhyanamandira.fragments.EventsFragment;
 import com.braingalore.dhyanamandira.fragments.FacebookLikeFragment;
 import com.braingalore.dhyanamandira.fragments.FounderFragment;
@@ -57,6 +61,7 @@ public class HomeActivity extends AppCompatActivity
     FragmentManager fm;
     FragmentTransaction fragmentTransaction;
     Toolbar toolbar;
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +85,7 @@ public class HomeActivity extends AppCompatActivity
             finish();
         }
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -148,38 +153,43 @@ public class HomeActivity extends AppCompatActivity
                 AboutFragment f1 = new AboutFragment();
                 fragmentTransaction.replace(R.id.fragment_container, f1);
                 fragmentTransaction.commitAllowingStateLoss();
-                toolbar.setTitle("Dhyana Mandira Yoga Kendra");
-            }
-            if (id == R.id.nav_about_founder) {
+                toolbar.setTitle(getString(R.string.app_name));
+                fab.setVisibility(View.VISIBLE);
+            } else if (id == R.id.nav_about_founder) {
                 fragmentTransaction = fm.beginTransaction();
                 FounderFragment f1 = new FounderFragment();
                 fragmentTransaction.replace(R.id.fragment_container, f1);
                 fragmentTransaction.commitAllowingStateLoss();
                 toolbar.setTitle("Founder");
+                fab.setVisibility(View.VISIBLE);
             } else if (id == R.id.nav_events) {
                 fragmentTransaction = fm.beginTransaction();
                 EventsFragment f1 = new EventsFragment();
                 fragmentTransaction.replace(R.id.fragment_container, f1);
                 fragmentTransaction.commitAllowingStateLoss();
                 toolbar.setTitle("Events");
+                fab.setVisibility(View.VISIBLE);
             } else if (id == R.id.nav_cost_involved) {
                 fragmentTransaction = fm.beginTransaction();
                 CostFragment f1 = new CostFragment();
                 fragmentTransaction.replace(R.id.fragment_container, f1);
                 fragmentTransaction.commitAllowingStateLoss();
                 toolbar.setTitle("Registration Formality");
+                fab.setVisibility(View.VISIBLE);
             } else if (id == R.id.nav_gallery) {
                 fragmentTransaction = fm.beginTransaction();
                 GalleryFragment f1 = new GalleryFragment();
                 fragmentTransaction.replace(R.id.fragment_container, f1);
                 fragmentTransaction.commitAllowingStateLoss();
                 toolbar.setTitle("Gallery");
+                fab.setVisibility(View.VISIBLE);
             } else if (id == R.id.nav_experiences) {
                 fragmentTransaction = fm.beginTransaction();
                 CommentsFragment f1 = new CommentsFragment();
                 fragmentTransaction.replace(R.id.fragment_container, f1);
                 fragmentTransaction.commitAllowingStateLoss();
                 toolbar.setTitle("Comments");
+                fab.setVisibility(View.VISIBLE);
             } else if (id == R.id.nav_mail) {
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -195,12 +205,14 @@ public class HomeActivity extends AppCompatActivity
                 fragmentTransaction.replace(R.id.fragment_container, f1);
                 fragmentTransaction.commitAllowingStateLoss();
                 toolbar.setTitle("Call");
+                fab.setVisibility(View.VISIBLE);
             } else if (id == R.id.nav_visit) {
                 fragmentTransaction = fm.beginTransaction();
                 VisitFragment f1 = new VisitFragment();
                 fragmentTransaction.replace(R.id.fragment_container, f1);
                 fragmentTransaction.commitAllowingStateLoss();
                 toolbar.setTitle("Visit");
+                fab.setVisibility(View.VISIBLE);
             } else if (false/*id == R.id.nav_feedback*/) {
                 final Dialog dialog = new Dialog(this);
                 dialog.setContentView(R.layout.feedback_fragment);
@@ -230,20 +242,43 @@ public class HomeActivity extends AppCompatActivity
                 fragmentTransaction.replace(R.id.fragment_container, f1);
                 fragmentTransaction.commitAllowingStateLoss();
                 toolbar.setTitle("Like & Share");
+                fab.setVisibility(View.VISIBLE);
             } else if (id == R.id.nav_share) {
                 Intent shareIntent = new Intent(Intent.ACTION_SEND);
                 shareIntent.setType("text/plain");
-                String shareSubText = "Dhyana Mandira Yoga Kendra";
+                String shareSubText = getString(R.string.app_name);
                 String shareBodyText = "https://play.google.com/store/apps/details?id=com.braingalore.dhyanamandira&hl=en";
                 shareIntent.putExtra(Intent.EXTRA_SUBJECT, shareSubText);
                 shareIntent.putExtra(Intent.EXTRA_TEXT, shareBodyText);
                 startActivity(Intent.createChooser(shareIntent, "Share With"));
+            } else if (id == R.id.abhyasas) {
+                fragmentTransaction = fm.beginTransaction();
+                AbhyasasExpandableFragment f1 = new AbhyasasExpandableFragment();
+                fragmentTransaction.replace(R.id.fragment_container, f1);
+                fragmentTransaction.commitAllowingStateLoss();
+                toolbar.setTitle("Yoga Abhyasas");
+                fab.setVisibility(View.INVISIBLE);
+            } else if (id == R.id.astanga_yoga) {
+                fragmentTransaction = fm.beginTransaction();
+                AstangaYogaFragment f1 = new AstangaYogaFragment();
+                fragmentTransaction.replace(R.id.fragment_container, f1);
+                fragmentTransaction.commitAllowingStateLoss();
+                toolbar.setTitle("Astanga Yoga");
+                fab.setVisibility(View.VISIBLE);
+            }else if (id == R.id.dhyana_mandira) {
+                fragmentTransaction = fm.beginTransaction();
+                DhyanaMandiraPlatformFragment f1 = new DhyanaMandiraPlatformFragment();
+                fragmentTransaction.replace(R.id.fragment_container, f1);
+                fragmentTransaction.commitAllowingStateLoss();
+                toolbar.setTitle("Dhyana Mandira");
+                fab.setVisibility(View.VISIBLE);
             } else if (id == R.id.mantras) {
                 fragmentTransaction = fm.beginTransaction();
                 MantrasFragment f1 = new MantrasFragment();
                 fragmentTransaction.replace(R.id.fragment_container, f1);
                 fragmentTransaction.commitAllowingStateLoss();
                 toolbar.setTitle("Mantras");
+                fab.setVisibility(View.INVISIBLE);
             }
         } catch (Exception e) {
             FirebaseCrash.report(new Exception("Exception while committing consecutive fragments " + e));

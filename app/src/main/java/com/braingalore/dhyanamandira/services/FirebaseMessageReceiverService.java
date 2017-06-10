@@ -38,9 +38,9 @@ public class FirebaseMessageReceiverService extends FirebaseMessagingService {
         Bitmap rawBitmap = BitmapFactory.decodeResource(getResources(),
                 R.mipmap.ic_launcher_round);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.ic_stat_notif_icon_firebase)
+                .setSmallIcon(R.drawable.ic_stat_notif_icon_firebase_om)
                 .setLargeIcon(rawBitmap)
-                .setContentTitle(intent.getStringExtra("gcm.notification.title"))
+                .setContentTitle(getResources().getString(R.string.app_name))
                 .setContentText(intent.getStringExtra("gcm.notification.body"))
                 .setAutoCancel(true)
                 .setContentIntent(pendingIntent);

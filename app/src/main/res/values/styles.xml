@@ -13,6 +13,14 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="NavigationDrawerStyle">
+        <item name="android:textSize">14sp</item><!-- text size in menu-->
+        <item name="android:listPreferredItemHeightSmall">45dp</item><!-- item size in menu-->
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <!--<item name="android:layout_marginBottom">02dp</item>-->
+    </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

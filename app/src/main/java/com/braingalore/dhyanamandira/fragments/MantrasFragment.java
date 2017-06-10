@@ -55,8 +55,8 @@ public class MantrasFragment extends Fragment {
         listDataHeader.add("Shanti Mantra(Beginning)");
         listDataHeader.add("Gurusthuti Mantra");
         listDataHeader.add("Suryanamaskara Mantra");
-        listDataHeader.add("Phalashruti Mantra");
-        listDataHeader.add("Bhu Namana Mantra");
+        listDataHeader.add("Surya Namaskara Phalashruti Mantra");
+        listDataHeader.add("Bhoo Namana Mantra");
         listDataHeader.add("Pranayama mantra");
         listDataHeader.add("Shanti mantra(Ending)");
 

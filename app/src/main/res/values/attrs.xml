@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircleView">
+        <attr name="mainTextSize" format="dimension" />
+        <attr name="secondaryTextSize" format="dimension" />
+        <attr name="circleColour" format="color" />
+        <attr name="mainTextColor" format="color" />
+        <attr name="secondaryTextColor" format="color" />
+        <attr name="mainText" format="string" />
+        <attr name="secondaryText" format="string" />
+        <attr name="fill" format="boolean" />
+    </declare-styleable>
+
+
+        <declare-styleable name="CircularImageView">
+            <attr name="civ_border" format="boolean"/>
+            <attr name="civ_border_width" format="dimension"/>
+            <attr name="civ_border_color" format="color"/>
+            <attr name="civ_shadow" format="boolean"/>
+            <attr name="civ_shadow_color" format="color"/>
+            <attr name="civ_shadow_radius" format="float"/>
+        </declare-styleable>
+
+
+
+</resources>
