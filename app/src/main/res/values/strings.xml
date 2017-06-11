@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Yoga @ Dhyana Mandira</string>
+    <string name="dmyk">\"Dhyana Mandira Yoga Kendra\"</string>
+    <string name="dmyk_address">Shri Someshwara(Shiva) Temple\nMadiwala, BTM 1st stage, Bangalore-68.</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

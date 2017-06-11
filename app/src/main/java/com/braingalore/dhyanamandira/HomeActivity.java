@@ -24,6 +24,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.braingalore.dhyanamandira.fragments.AbhyasasExpandableFragment;
 import com.braingalore.dhyanamandira.fragments.AboutFragment;
@@ -61,6 +62,7 @@ public class HomeActivity extends AppCompatActivity
     FragmentTransaction fragmentTransaction;
     Toolbar toolbar;
     FloatingActionButton fab;
+    MenuItem previousCheckedItem = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +106,7 @@ public class HomeActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -135,9 +138,11 @@ public class HomeActivity extends AppCompatActivity
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
+            //drawer.closeDrawer(GravityCompat.START);
             super.onBackPressed();
+        } else {
+            Toast.makeText(this,"Press again to exit.",Toast.LENGTH_SHORT).show();
+            drawer.openDrawer(GravityCompat.START);
         }
     }
 
@@ -146,6 +151,11 @@ public class HomeActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        if(previousCheckedItem!=null) {
+            previousCheckedItem.setChecked(false);
+        }
+        item.setChecked(true);
+        previousCheckedItem = item;
         try {
             if (id == R.id.nav_about_dmyk) {
                 fragmentTransaction = fm.beginTransaction();

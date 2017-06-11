@@ -14,8 +14,8 @@ android {
         applicationId "com.braingalore.dhyanamandira"
         minSdkVersion 17
         targetSdkVersion 25
-        versionCode 13
-        versionName "1.0.13"
+        versionCode 14
+        versionName "1.0.14"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     packagingOptions {

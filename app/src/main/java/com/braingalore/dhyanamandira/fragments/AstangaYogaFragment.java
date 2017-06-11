@@ -16,7 +16,7 @@ import com.braingalore.dhyanamandira.utils.AnimUtils;
  */
 
 public class AstangaYogaFragment extends Fragment {
-    String aboutAstangaYoga = "<html><body style=\"text-align:justify\">ASTANGA YOGA - A PATH TOWARDS ULTIMATE<br><br>Pathanjali Maharshi\'s Astanga Yoga Sutras (8 limbs) are simple and most effective guidelines to reach an \"Ultimate\" state of life. Yama, Niyama, Asana, Pranayama, Pratyahara, Dharana & Samadhi - the path that takes one towards ultimate.<br><br>These 8 sutras with more sub sutras help the practitioner for total personality development. The Physical, Mental, Emotional, Social, Spiritual wellbeing are the aims. The Yogic Life is much needed for Individual health and social harmony.<br><br>How this is being achieved here..?? see the next page on Dhyana Mandira - a Platform to Transform.</body></Html>";
+    String aboutAstangaYoga = "<html><body style=\"text-align:justify\">\"ASTANGA YOGA\" - a path towards \"ULTIMATE\"<br><br>Pathanjali Maharshi\'s Astanga Yoga Sutras (8 limbs) are simple and most effective guidelines to reach an \"Ultimate\" state of life. Yama, Niyama, Asana, Pranayama, Pratyahara, Dharana, Dhyana & Samadhi - the path that takes one towards ultimate.<br><br>These 8 sutras with more sub sutras help the practitioner for total personality development. The Physical, Mental, Emotional, Social, Spiritual wellbeing are the aims. The Yogic Life is much needed for Individual health and social harmony.<br><br><i>How this is being achieved here..?? see the next page on \"DHYANA MANDIRA\" - a \"PLATFORM\" to \"TRANSFORM\".</i></body></Html>";
 
     private WebView webView;
 

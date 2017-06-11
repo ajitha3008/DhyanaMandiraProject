@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="Dhyana Mandira Yoga Kendra"
+        android:text="@string/dmyk"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
@@ -35,6 +35,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Hari Aum!" />
+        android:maxLines="4"
+        android:inputType="textMultiLine"
+        android:text="@string/dmyk_address" />
 
 </LinearLayout>
