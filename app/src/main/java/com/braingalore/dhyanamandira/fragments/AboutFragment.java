@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.braingalore.dhyanamandira.R;
 import com.braingalore.dhyanamandira.utils.AnimUtils;
@@ -26,18 +28,20 @@ public class AboutFragment extends Fragment {
 
     Context context;
 
+    View fullView;
+
+    TextView headingView;
+
+    ScrollView scrollView;
+
     public View onCreateView(LayoutInflater inflater, ViewGroup vg,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.content_about, vg, false);
+        fullView = inflater.inflate(R.layout.content_about, vg, false);
+        scrollView = (ScrollView)fullView.findViewById(R.id.scroll_view);
         context = getActivity();
-        aboutView = (WebView) view.findViewById(R.id.webView_about);
+        aboutView = (WebView) fullView.findViewById(R.id.webView_about);
+        headingView = (TextView) fullView.findViewById(R.id.dhyana_text_view);
         aboutView.loadData(String.format(htmlText, about), "text/html", "utf-8");
-        aboutView.setWebViewClient(new WebViewClient() {
-            public void onPageFinished(WebView view, String url) {
-                AnimUtils.animate(view, context);
-                view.scrollTo(0, 0);
-            }
-        });
-        return view;
+        return fullView;
     }
 }

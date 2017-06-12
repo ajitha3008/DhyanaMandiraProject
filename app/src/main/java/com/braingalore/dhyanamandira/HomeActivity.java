@@ -130,6 +130,9 @@ public class HomeActivity extends AppCompatActivity
                         .setCancelable(false)
                         .show();
             }
+        } else {
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            drawer.openDrawer(GravityCompat.START);
         }
         getIntent().setAction("");
     }
@@ -141,7 +144,7 @@ public class HomeActivity extends AppCompatActivity
             //drawer.closeDrawer(GravityCompat.START);
             super.onBackPressed();
         } else {
-            Toast.makeText(this,"Press again to exit.",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Press again to exit.", Toast.LENGTH_SHORT).show();
             drawer.openDrawer(GravityCompat.START);
         }
     }
@@ -151,7 +154,7 @@ public class HomeActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        if(previousCheckedItem!=null) {
+        if (previousCheckedItem != null) {
             previousCheckedItem.setChecked(false);
         }
         item.setChecked(true);
@@ -265,7 +268,7 @@ public class HomeActivity extends AppCompatActivity
                 AbhyasasExpandableFragment f1 = new AbhyasasExpandableFragment();
                 fragmentTransaction.replace(R.id.fragment_container, f1);
                 fragmentTransaction.commitAllowingStateLoss();
-                toolbar.setTitle("Yoga Abhyasas");
+                toolbar.setTitle(getResources().getString(R.string.abhyasas));
                 fab.setVisibility(View.INVISIBLE);
             } else if (id == R.id.astanga_yoga) {
                 fragmentTransaction = fm.beginTransaction();

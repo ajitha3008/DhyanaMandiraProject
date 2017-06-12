@@ -32,7 +32,7 @@
                 android:title="@string/ashtanga_yoga" />
             <item
                 android:id="@+id/dhyana_mandira"
-                android:icon="@drawable/ic_action_vrik"
+                android:icon="@drawable/ic_action_dhyana"
                 android:title="@string/platform_to_transform" />
 
             <item

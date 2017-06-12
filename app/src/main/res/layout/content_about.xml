@@ -21,6 +21,7 @@
         card_view:cardCornerRadius="4dp">
 
         <ScrollView
+            android:id="@+id/scroll_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -28,7 +29,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:descendantFocusability="blocksDescendants">
 
                 <TextView
                     android:id="@+id/dhyana_text_view"
@@ -38,17 +40,19 @@
                     android:text="DHYANA MANDIRA YOGA KENDRA"
                     android:textAllCaps="true"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                    android:textSize="16dp" />
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/classroom_image_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
-                    android:adjustViewBounds="true"
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
+                    android:adjustViewBounds="true"
                     android:src="@drawable/dhyana_mandira" />
 
                 <WebView

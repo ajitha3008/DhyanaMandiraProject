@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">Yoga @ Dhyana Mandira</string>
     <string name="dmyk">\"Dhyana Mandira Yoga Kendra\"</string>
-    <string name="dmyk_address">Shri Someshwara(Shiva) Temple\nMadiwala, BTM 1st stage, Bangalore-68.</string>
+    <string name="dmyk_split">Dhyana Mandira\nYoga Kendra</string>
+    <string name="dmyk_address">Shri Someshwara(Shiva) Temple,\nMadiwala, BTM 1st stage,\nBangalore-68.</string>
+    <string name="dmyk_full">\"Dhyana Mandira Yoga Kendra\"\nShri Someshwara(Shiva) Temple,\nMadiwala, BTM 1st stage,\nBangalore-560 068.</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -17,7 +19,7 @@
     <string name="comments_received">Comments received</string>
     <string name="ashtanga_yoga">"Astanga Yoga"-a path towards ultimate</string>
     <string name="platform_to_transform">"Dhyana Mandira"-a platform to transform</string>
-    <string name="abhyasas">Abhyasas</string>
+    <string name="abhyasas">Yogabhyasa Prakriyas</string>
     <string name="mantras">Mantras</string>
     <string name="title_yoga">Yoga</string>
     <string name="contact_us">Contact Us</string>
