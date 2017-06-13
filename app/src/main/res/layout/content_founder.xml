@@ -38,6 +38,8 @@
                     android:padding="10dp"
                     android:text="FOUNDER"
                     android:textAllCaps="true"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorAccent"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                     android:textSize="16dp" />
 
