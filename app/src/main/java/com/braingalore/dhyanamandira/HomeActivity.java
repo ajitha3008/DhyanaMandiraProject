@@ -108,14 +108,13 @@ public class HomeActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
+        checkFirebaseAction(getIntent());
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (Constants.FIREBASE_ACTION.equals(getIntent().getAction())) {
+    private void checkFirebaseAction(Intent intent) {
+        if (intent.getBooleanExtra(Constants.FIREBASE_ACTION, false)) {
             String title = getResources().getString(R.string.app_name);
-            String body = getIntent().getStringExtra(Constants.FIREBASE_BODY);
+            String body = intent.getStringExtra(Constants.FIREBASE_BODY);
             if (!TextUtils.isEmpty(body)) {
                 AlertDialog.Builder builder;
                 builder = new AlertDialog.Builder(this);
@@ -124,17 +123,30 @@ public class HomeActivity extends AppCompatActivity
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
+                                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                                drawer.openDrawer(GravityCompat.START);
                             }
                         })
                         .setIcon(getResources().getDrawable(R.mipmap.ic_launcher))
                         .setCancelable(false)
                         .show();
             }
-        } else {
+        }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        checkFirebaseAction(intent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (!getIntent().getBooleanExtra(Constants.FIREBASE_ACTION, false)) {
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             drawer.openDrawer(GravityCompat.START);
         }
-        getIntent().setAction("");
     }
 
     @Override

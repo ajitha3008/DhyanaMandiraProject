@@ -30,7 +30,7 @@ public class FirebaseMessageReceiverService extends FirebaseMessagingService {
     @Override
     public void zzm(Intent intent) {
         Intent launchIntent = new Intent(this, HomeActivity.class);
-        launchIntent.setAction(Constants.FIREBASE_ACTION);
+        launchIntent.putExtra(Constants.FIREBASE_ACTION, true);
         launchIntent.putExtra(Constants.FIREBASE_TITLE, intent.getStringExtra("gcm.notification.title"));
         launchIntent.putExtra(Constants.FIREBASE_BODY, intent.getStringExtra("gcm.notification.body"));
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, launchIntent,
