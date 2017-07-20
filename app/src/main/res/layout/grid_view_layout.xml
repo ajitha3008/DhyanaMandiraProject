@@ -40,7 +40,7 @@
                 android:id="@+id/gallery_grid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/marqueedText"
+                android:layout_above="@+id/googlePlusTextView"
                 android:numColumns="2"
                 android:scrollbars="vertical"
                 android:verticalSpacing="10dp" />
