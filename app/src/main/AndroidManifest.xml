@@ -48,7 +48,7 @@
             android:value="@string/facebook_app_id" />
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/ic_stat_notif_icon_firebase" />
+            android:resource="@drawable/ic_stat_notif_icon_firebase_om" />
         <!-- TODO: release key generation for facebook -->
         <provider
             android:name="com.facebook.FacebookContentProvider"

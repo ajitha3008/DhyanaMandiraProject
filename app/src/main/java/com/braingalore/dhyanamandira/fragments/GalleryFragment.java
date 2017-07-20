@@ -1,23 +1,23 @@
 package com.braingalore.dhyanamandira.fragments;
 
 import android.app.Fragment;
-import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.res.AssetManager;
+import android.graphics.Paint;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.TextView;
 
 import com.braingalore.dhyanamandira.R;
 import com.braingalore.dhyanamandira.adapter.GalleryGridViewAdapter;
-import com.braingalore.dhyanamandira.model.GalleryObject;
 import com.google.firebase.crash.FirebaseCrash;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by s92 on 5/4/2017.
@@ -25,21 +25,27 @@ import java.util.List;
 
 public class GalleryFragment extends Fragment {
 
-    RecyclerView galleryItemList;
-
     GalleryGridViewAdapter galleryAdapter;
 
-    List<GalleryObject> galleryObjectList;
-
-    ProgressDialog pDialog;
-
     GridView gridView;
+
+    TextView googlePlusTextView;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup vg,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.grid_view_layout, vg, false);
         gridView = (GridView) view.findViewById(R.id.gallery_grid);
-
+        googlePlusTextView = (TextView) view.findViewById(R.id.googlePlusTextView);
+        googlePlusTextView.setText(getActivity().getString(R.string.marquee_text));
+        googlePlusTextView.setPaintFlags(googlePlusTextView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        googlePlusTextView.setSelected(true);
+        googlePlusTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().startActivity(new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("https://plus.google.com/104001892080880835190/posts")));
+            }
+        });
         ArrayList<String> filePaths = getFilePaths();
         try {
             if (!filePaths.isEmpty()) {

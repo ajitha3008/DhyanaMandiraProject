@@ -34,7 +34,7 @@ public class FirebaseMessageReceiverService extends FirebaseMessagingService {
         launchIntent.putExtra(Constants.FIREBASE_TITLE, intent.getStringExtra("gcm.notification.title"));
         launchIntent.putExtra(Constants.FIREBASE_BODY, intent.getStringExtra("gcm.notification.body"));
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, launchIntent,
-                PendingIntent.FLAG_ONE_SHOT);
+                PendingIntent.FLAG_UPDATE_CURRENT);
         Bitmap rawBitmap = BitmapFactory.decodeResource(getResources(),
                 R.mipmap.ic_launcher_round);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)

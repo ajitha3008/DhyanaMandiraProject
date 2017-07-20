@@ -3,9 +3,14 @@ package com.braingalore.dhyanamandira;
 import android.app.Dialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -13,6 +18,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -20,6 +26,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -38,9 +45,13 @@ import com.braingalore.dhyanamandira.fragments.FacebookLikeFragment;
 import com.braingalore.dhyanamandira.fragments.FounderFragment;
 import com.braingalore.dhyanamandira.fragments.GalleryFragment;
 import com.braingalore.dhyanamandira.fragments.MantrasFragment;
+import com.braingalore.dhyanamandira.fragments.VideosFragment;
 import com.braingalore.dhyanamandira.fragments.VisitFragment;
 import com.braingalore.dhyanamandira.utils.CallingUtils;
 import com.google.firebase.crash.FirebaseCrash;
+
+import it.sephiroth.android.library.tooltip.Tooltip;
+
 /*import com.facebook.share.widget.LikeView;
 import com.sun.mail.smtp.SMTPTransport;
 
@@ -57,19 +68,28 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;*/
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
-    FragmentManager fm;
-    FragmentTransaction fragmentTransaction;
-    Toolbar toolbar;
-    FloatingActionButton fab;
-    MenuItem previousCheckedItem = null;
+        implements NavigationView.OnNavigationItemSelectedListener, Tooltip.Callback {
+
+    private Tooltip.ClosePolicy mClosePolicy = Tooltip.ClosePolicy.TOUCH_ANYWHERE_CONSUME;
+
+    private FragmentManager fm;
+
+    private FragmentTransaction fragmentTransaction;
+
+    private Toolbar toolbar;
+
+    private FloatingActionButton fab;
+
+    private MenuItem previousCheckedItem = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        //testFirebase();
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Tooltip.dbg = true;
         //for testing
         //FirebaseCrash.log("Activity created");
         //FirebaseCrash.logcat(Log.ERROR, "ajitha", "No error");
@@ -111,11 +131,46 @@ public class HomeActivity extends AppCompatActivity
         checkFirebaseAction(getIntent());
     }
 
+    /**
+     * This method is written to test the firebase intents
+     */
+    private void testFirebase() {
+        Intent launchIntent = new Intent(this, HomeActivity.class);
+        launchIntent.putExtra(Constants.FIREBASE_ACTION, true);
+        launchIntent.putExtra(Constants.FIREBASE_TITLE, "Sample Title");
+        launchIntent.putExtra(Constants.FIREBASE_BODY, "Sample Body");
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, launchIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+        Bitmap rawBitmap = BitmapFactory.decodeResource(getResources(),
+                R.mipmap.ic_launcher_round);
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.drawable.ic_stat_notif_icon_firebase_om)
+                .setLargeIcon(rawBitmap)
+                .setContentTitle(getResources().getString(R.string.app_name))
+                .setContentText("Sample body")
+                .setAutoCancel(true)
+                .setContentIntent(pendingIntent);
+
+        NotificationManager notificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        Notification notification = notificationBuilder.build();
+        notification.flags |= Notification.FLAG_NO_CLEAR;
+
+        notificationManager.notify(0 /* ID of notification */, notification);
+    }
+
+    /**
+     * This method checks is the action received to open HomeActivity is firebase action
+     *
+     * @param intent
+     */
     private void checkFirebaseAction(Intent intent) {
         if (intent.getBooleanExtra(Constants.FIREBASE_ACTION, false)) {
             String title = getResources().getString(R.string.app_name);
             String body = intent.getStringExtra(Constants.FIREBASE_BODY);
             if (!TextUtils.isEmpty(body)) {
+                SharedPreferenceManager.getInstance().setNotifContent(body);
                 AlertDialog.Builder builder;
                 builder = new AlertDialog.Builder(this);
                 builder.setTitle(title);
@@ -206,7 +261,7 @@ public class HomeActivity extends AppCompatActivity
                 fragmentTransaction.replace(R.id.fragment_container, f1);
                 fragmentTransaction.commitAllowingStateLoss();
                 toolbar.setTitle("Gallery");
-                fab.setVisibility(View.VISIBLE);
+                fab.setVisibility(View.INVISIBLE);
             } else if (id == R.id.nav_experiences) {
                 fragmentTransaction = fm.beginTransaction();
                 CommentsFragment f1 = new CommentsFragment();
@@ -303,6 +358,13 @@ public class HomeActivity extends AppCompatActivity
                 fragmentTransaction.commitAllowingStateLoss();
                 toolbar.setTitle("Mantras");
                 fab.setVisibility(View.INVISIBLE);
+            } else if (id == R.id.nav_videos) {
+                fragmentTransaction = fm.beginTransaction();
+                VideosFragment f1 = new VideosFragment();
+                fragmentTransaction.replace(R.id.fragment_container, f1);
+                fragmentTransaction.commitAllowingStateLoss();
+                toolbar.setTitle("Videos");
+                fab.setVisibility(View.INVISIBLE);
             }
         } catch (Exception e) {
             FirebaseCrash.report(new Exception("Exception while committing consecutive fragments " + e));
@@ -319,6 +381,45 @@ public class HomeActivity extends AppCompatActivity
         //LikeView.handleOnActivityResult(this, requestCode, resultCode, data);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.home, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_notification:
+                View view = findViewById(R.id.action_notification);
+                Tooltip.make(this, new Tooltip.Builder(101)
+                        .text(SharedPreferenceManager.getInstance().getNotifContent())
+                        .withStyleId(R.style.ToolTipLayoutCustomStyle)
+                        .anchor(view, Tooltip.Gravity.BOTTOM)
+                        .closePolicy(mClosePolicy, 3000)
+                        .fadeDuration(200)
+                        .fitToScreen(true)
+                        .activateDelay(2000)
+                        .withCallback(this)
+                        .floatingAnimation(Tooltip.AnimationBuilder.DEFAULT)
+                        .showDelay(400)
+                        .build()
+                ).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    /**
+     * This method send email with hardcoded uname and pwd-NOT RECOMMENDED
+     *
+     * @param mail
+     * @param name
+     * @param message
+     */
     private void sendMail(final String mail, final String name, final String message) {
        /* new Thread(){
             public void run() {
@@ -354,6 +455,11 @@ public class HomeActivity extends AppCompatActivity
         }.start();*/
     }
 
+    /**
+     * This method checks if internet connection is available
+     *
+     * @return
+     */
     public boolean isNetworkAvailable() {
         try {
             ConnectivityManager connectivityManager
@@ -364,5 +470,25 @@ public class HomeActivity extends AppCompatActivity
             FirebaseCrash.report(new Exception("Error while trying to check network availability " + e));
             return false;
         }
+    }
+
+    @Override
+    public void onTooltipClose(Tooltip.TooltipView tooltipView, boolean b, boolean b1) {
+
+    }
+
+    @Override
+    public void onTooltipFailed(Tooltip.TooltipView tooltipView) {
+
+    }
+
+    @Override
+    public void onTooltipShown(Tooltip.TooltipView tooltipView) {
+
+    }
+
+    @Override
+    public void onTooltipHidden(Tooltip.TooltipView tooltipView) {
+
     }
 }

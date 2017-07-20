@@ -29,4 +29,13 @@
         <item name="colorControlNormal">@color/colorAccent</item>
         <item name="colorControlActivated">@color/colorAccent</item>
     </style>
+
+    <style name="ToolTipLayoutCustomStyle" parent="ToolTipLayoutDefaultStyle">
+        <item name="android:textAppearance">@style/ToolTipTextStyle</item>
+    </style>
+
+    <style name="ToolTipTextStyle">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:gravity">center</item>
+    </style>
 </resources>

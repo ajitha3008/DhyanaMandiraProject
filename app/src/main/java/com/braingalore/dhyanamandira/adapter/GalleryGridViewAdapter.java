@@ -24,7 +24,6 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListe
 import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
-import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -197,7 +196,6 @@ public class GalleryGridViewAdapter extends BaseAdapter {
             i.putExtra(Constants.GRID_URI, griRowItems.get(_postion));
             context.startActivity(i);
         }
-
     }
 
     @Override

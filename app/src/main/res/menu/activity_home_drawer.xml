@@ -57,6 +57,10 @@
                 android:icon="@drawable/ic_action_collections"
                 android:title="@string/gallery" />
             <item
+                android:id="@+id/nav_videos"
+                android:icon="@drawable/ic_action_ondemand_video"
+                android:title="@string/videos" />
+            <item
                 android:id="@+id/nav_experiences"
                 android:icon="@drawable/ic_action_insert_comment"
                 android:title="@string/comments_received" />

@@ -18,6 +18,8 @@ public class DhyanaMandira extends Application {
         super.onCreate();
         FirebaseApp.initializeApp(this);
         FacebookSdk.sdkInitialize(this);
+        SharedPreferenceManager.createInstance(this);
+        SharedPreferenceManager.getInstance().createSharedPreferences();
         // Setup handler for uncaught exceptions.
         Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
             @Override
@@ -28,7 +30,7 @@ public class DhyanaMandira extends Application {
     }
 
     public void handleUncaughtException(Thread thread, Throwable e) {
-        FirebaseCrash.report(new Exception("Default exception handler " + e));
+        FirebaseCrash.report(new Exception("Default exception handler " + e.getMessage() + e.getStackTrace().toString()));
         System.exit(1); // kill off the crashed app
     }
 }

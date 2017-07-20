@@ -6,4 +6,5 @@
     <color name="colorPrimaryDark">#a55200</color>
     <!--<color name="colorAccent">#FF4081</color>-->
     <color name="colorAccent">#ff9933</color>
+    <color name="hyperlink_blue">#0645AD</color>
 </resources>

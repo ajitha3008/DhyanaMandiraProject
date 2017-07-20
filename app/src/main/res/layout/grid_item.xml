@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
-        android:padding="10dp" />
+        android:padding="10dp"
+        android:scaleType="fitCenter" />
 
     <TextView
         android:id="@+id/caption"
@@ -18,8 +19,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:ellipsize="marquee"
-        android:padding="10dp"
         android:maxLines="1"
+        android:padding="10dp"
         android:textColor="#FFFFFF"
         android:textSize="15sp" />
 </RelativeLayout>
