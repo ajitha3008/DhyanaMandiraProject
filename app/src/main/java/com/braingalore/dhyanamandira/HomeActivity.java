@@ -274,7 +274,7 @@ public class HomeActivity extends AppCompatActivity
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.setData(Uri.fromParts("mailto", "rajkumargour10@gmail.com", null));
                 intent.putExtra(Intent.EXTRA_CC, new String[]{"rajayogamadiwala@gmail.com"});
-                intent.putExtra(Intent.EXTRA_SUBJECT, "DhyanaMandira :: Contact Us");
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Yoga Mandira :: Contact Us");
                 if (intent.resolveActivity(getPackageManager()) != null) {
                     startActivity(intent);
                 }
@@ -349,7 +349,7 @@ public class HomeActivity extends AppCompatActivity
                 DhyanaMandiraPlatformFragment f1 = new DhyanaMandiraPlatformFragment();
                 fragmentTransaction.replace(R.id.fragment_container, f1);
                 fragmentTransaction.commitAllowingStateLoss();
-                toolbar.setTitle("Dhyana Mandira");
+                toolbar.setTitle("Yoga Mandira");
                 fab.setVisibility(View.VISIBLE);
             } else if (id == R.id.mantras) {
                 fragmentTransaction = fm.beginTransaction();
@@ -432,9 +432,9 @@ public class HomeActivity extends AppCompatActivity
             msg.setFrom(new InternetAddress("thoughtgalore@gmail.com"));
             msg.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse("aji.b2w@gmail.com", false));
-            msg.setSubject("Dhyana Mandira :: Feedback " + System.currentTimeMillis());
+            msg.setSubject("Yoga Mandira :: Feedback " + System.currentTimeMillis());
             msg.setText("MAIL:"+mail+"\nNAME:"+name+"\nMESSAGE:"+message);
-            msg.setHeader("X-Mailer", "Dhyana Mandira");
+            msg.setHeader("X-Mailer", "Yoga Mandira");
             msg.setSentDate(new Date());
             SMTPTransport t =
                     (SMTPTransport) session.getTransport("smtps");

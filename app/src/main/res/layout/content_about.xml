@@ -37,7 +37,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="10dp"
-                    android:text="DHYANA MANDIRA YOGA KENDRA"
+                    android:text="ABOUT YOGA MANDIRA"
                     android:textAllCaps="true"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                     android:textColor="@color/colorAccent"

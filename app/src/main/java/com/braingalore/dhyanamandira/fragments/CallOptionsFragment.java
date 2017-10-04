@@ -44,7 +44,7 @@ public class CallOptionsFragment extends Fragment {
             if (CallingUtils.isSimPresent(getActivity())) {
                 CallingUtils.dialIntent(getActivity(), numberToDial, view);
             } else {
-                Snackbar.make(view, "Insert SIM card to call Dhyana Mandira - Rajkumar", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Insert SIM card to call Yoga Mandira - Rajkumar", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         }
