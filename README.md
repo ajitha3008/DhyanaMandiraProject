@@ -6,3 +6,5 @@ The Yoga classes are conducted every day in the divine premises of Lord Someshwa
 Pre-requisite to run the application:
 *Install facebook application,
 *Ensure having a email client with email configured.
+
+App is hosted @ https://play.google.com/store/apps/details?id=com.braingalore.dhyanamandira
