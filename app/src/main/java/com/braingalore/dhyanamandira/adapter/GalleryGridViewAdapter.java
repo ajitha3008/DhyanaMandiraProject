@@ -1,5 +1,6 @@
 package com.braingalore.dhyanamandira.adapter;
 
+import android.app.Activity;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -146,7 +147,7 @@ public class GalleryGridViewAdapter extends BaseAdapter {
         } else if (trimmedFileName.equals("image_28")) {
             return "Therapy1";
         } else if (trimmedFileName.equals("image_29")) {
-            return "Therapy1";
+            return "Therapy2";
         } else if (trimmedFileName.equals("image_30")) {
             return "Sakleshpur train trip";
         } else if (trimmedFileName.equals("image_31")) {
@@ -173,6 +174,12 @@ public class GalleryGridViewAdapter extends BaseAdapter {
             return "Yoga family Tour4";
         } else if (trimmedFileName.equals("image_42")) {
             return "Yogi as a farmer";
+        } else if (trimmedFileName.equals("image_43")) {
+            return "Pranayama";
+        } else if (trimmedFileName.equals("image_44")) {
+            return "Therapy session1";
+        } else if (trimmedFileName.equals("image_45")) {
+            return "Therapy session2";
         } else {
             return "Image";
         }
@@ -194,7 +201,7 @@ public class GalleryGridViewAdapter extends BaseAdapter {
             Intent i = new Intent(context, GalleryFullScreenPreview.class);
             i.putExtra(Constants.GRID_TITLE, getTitle(griRowItems.get(_postion)));
             i.putExtra(Constants.GRID_URI, griRowItems.get(_postion));
-            context.startActivity(i);
+            ((Activity)context).startActivityForResult(i, Constants.REQUEST_GALLERY_PREVIEW);
         }
     }
 

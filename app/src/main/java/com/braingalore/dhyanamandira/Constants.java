@@ -6,6 +6,7 @@ package com.braingalore.dhyanamandira;
 
 public class Constants {
     public static final int REQUEST_CALL_PHONE = 1234;
+    public static final int REQUEST_GALLERY_PREVIEW = 5678;
     public static final String FIREBASE_ACTION = "com.braingalore.dhyanamandira.firebase";
     public static final String FIREBASE_TITLE = "firebase_title";
     public static final String FIREBASE_BODY = "firebase_body";

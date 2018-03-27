@@ -82,6 +82,8 @@ public class HomeActivity extends AppCompatActivity
 
     private MenuItem previousCheckedItem = null;
 
+    private boolean mShouldOpenDrawer = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -183,7 +185,6 @@ public class HomeActivity extends AppCompatActivity
                             }
                         })
                         .setIcon(getResources().getDrawable(R.mipmap.ic_launcher))
-                        .setCancelable(false)
                         .show();
             }
         }
@@ -198,10 +199,11 @@ public class HomeActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
-        if (!getIntent().getBooleanExtra(Constants.FIREBASE_ACTION, false)) {
+        if (!getIntent().getBooleanExtra(Constants.FIREBASE_ACTION, false) && mShouldOpenDrawer) {
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             drawer.openDrawer(GravityCompat.START);
         }
+        mShouldOpenDrawer = true;
     }
 
     @Override
@@ -379,6 +381,9 @@ public class HomeActivity extends AppCompatActivity
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         //LikeView.handleOnActivityResult(this, requestCode, resultCode, data);
+        if (requestCode == Constants.REQUEST_GALLERY_PREVIEW) {
+            mShouldOpenDrawer = false;
+        }
     }
 
     @Override
