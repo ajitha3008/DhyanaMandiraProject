@@ -12,13 +12,9 @@ import android.webkit.WebViewClient;
 import com.braingalore.dhyanamandira.R;
 import com.braingalore.dhyanamandira.utils.AnimUtils;
 
-/**
- * Created by s92 on 5/4/2017.
- */
-
 public class FounderFragment extends Fragment {
 
-    String aboutSir = "<html><body style=\"text-align:justify\">\"Shri Rajkumar Gour\" is Mukhya Yoga Shikshaka and Chief Administrator at \"Yoga Mandira\". He chose Yoga as a path of service in the year 2009 and has provided yoga coaching to more than 5500 people as of now. He is a Yoga Pracharak and Yoga Shikshaka. His service in the yoga field through this Yoga Mandira is great inspiration and motivation for the people who get associated with this yoga kendra. Many lives have changed with his way of yoga teachings and thus his service is a noticeable contribution to the society. His selfless and constant efforts have made \"Yoga Mandira\" - as an epicenter of Yoga in this region of Bangalore.</body></Html>";
+    String aboutSir = "<html><body style=\"text-align:justify\">\"Shri Rajkumar Gour\" is Mukhya Yoga Shikshaka and Chief Administrator at \"Yoga Mandira\". He chose Yoga as a path of service in the year 2009 and has provided yoga coaching to more than 6500+ people as of now. He is a Yoga Pracharak and Yoga Shikshaka. His service in the yoga field through this Yoga Mandira is great inspiration and motivation for the people who get associated with this yoga kendra. Many lives have changed with his way of yoga teachings and thus his service is a noticeable contribution to the society. His selfless and constant efforts have made \"Yoga Mandira\" - as an epicenter of Yoga in this region of Bangalore.</body></Html>";
 
     private WebView aboutSirView;
 
